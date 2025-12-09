@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Website Estático - Serviços</title>
-</head>
-<body>
-    <header>
-        <a id="logo" href="home.html">
-            <img class="img_logo" src="images/logo.png" alt="Logo do Website" />
-        </a>
-        <nav>
-            <ul id="menu">
-                <li><a href="about.html">Sobre</a></li>
-                <li><a href="services.html">Serviços</a></li>
-                <li><a href="contact.html">Contactos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>O que oferecemos</h2>
-            <p>Oferecemos uma variedade de serviços para atender às suas necessidades, incluindo desenvolvimento web, design gráfico e consultoria em tecnologia.</p>
-        </section>
-        <section>
-            <h2>Por que escolher-nos</h2>
-            <p>Nossa equipe é composta por profissionais experientes dedicados a fornecer soluções de alta qualidade e suporte excepcional aos nossos clientes.</p>
-        </section>
-    </main>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Website Estático - Serviços</title>
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="home.html">
+                <img class="img_logo" src="images/logo.png" alt="Logo do Website" />
+            </a>
+            <nav>
+                <ul id="menu">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropbtn">Serviços</a>
+                        <div class="dropdown_content">
+                            <a href="mecanica.html">Área de Mecânica</a>
+                            <a href="estetica.html">Área de Estética</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contactos</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h2 class="title_apre_services">Tipos de Serviços</h2>
+                <p>Na F&S, o seu veículo é a nossa prioridade. Da reparação à estética, visite os nossos serviços e procure a solução para o seu problema.</p>
+                <div class="services_grid">
+                    <div class="card_service">
+                        <h3>Troca de Óleo (Mecânica Rápida)</h3>
+                        <p>Substituição de óleo e filtros para garantir a longevidade do motor</p>
+                    </div>
+                    <div class="card_service">
+                        <h3>Diagnóstico (Mecânica Especializada)</h3>
+                        <p>Análise computorizada para identificar qualquer avaria no sistema.</p>        
+                    </div>
+                    <div class="card_service">
+                        <h3>Pintura</h3>
+                        <p>Recuperação da cor original ou personalização completa.</p>
+                    </div>
+                    <div class="card_service">
+                        <h3>Limpeza Interior (Higiénização)</h3>
+                        <p>Lavagem profunda de estofos e tratamento de plásticos.</p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2 class="title_apre_services">As nosssas Equipas</h2>
+                <p>Para cada área, existem várias equipas ao seu dispor. Constituídas por profissionais, com diferentes formações e com anos de experiência, para fazer do seu problema o NOSSO problema. Não tenha receio, com o nosso rápido atendimento, basta confiar nas nossas equipas.</p>
+            </section>
+        </main>
+    </body>
     <footer>
         <p>&copy; 2024 Meu Website Estático. Todos os direitos reservados.</p>
     </footer>
+</html>
