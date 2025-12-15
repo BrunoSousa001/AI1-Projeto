@@ -107,7 +107,7 @@ li a:hover {
     left: 0; 
     background-color: var(--blue);
     min-width: 12.5em; /* 200px -> 12.5em */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0, 0.4);
     z-index: 1000;
     border-top: 3px solid var(--gold);
     border-radius: 0 0 5px 5px;
@@ -162,9 +162,9 @@ li a:hover {
 .services_grid {
     display: grid;
     /* Grelha que ajusta as colunas (min 250px, ou 15.625em) conforme o ecrã */
-    grid-template-columns: repeat(auto-fit, minmax(15.625em, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
     gap: 1.25em; /* 20px -> 1.25em */
-    margin-top: 1.25em;
+    margin-top: 1.5em;
 }
 
 .card_service {
@@ -177,13 +177,13 @@ li a:hover {
 }
 
 .card_service:hover {
-    transform: translateY(-0.3125em); /* 5px -> 0.3125em (Efeito de levitação) */
+    transform: translateY(-0.5em); /* 5px -> 0.3125em (Efeito de levitação) */
     border-color: var(--gold);
 }
 
 .card_service h3 {
     color: var(--gold);
-    margin-bottom: 0.625em; /* 10px -> 0.625em */
+    margin-bottom: 1em; /* 10px -> 0.625em */
 }
 
 /*=====================================
@@ -193,7 +193,7 @@ li a:hover {
 footer {
     background-color: var(--blue);
     color: var(--white);
-    padding: 1.875em 1.25em 0.625em; /* 30px, 20px, 10px em em */
+    padding: 2em 1em 0.5em; /* 30px, 20px, 10px - 1.875em 1.25em 0.625em*/
     width: 100%;
     border-top: 3px solid var(--gold);
 }
@@ -212,7 +212,7 @@ footer {
     color: var(--gold);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 0.5em; /* 8px -> 0.5em */
-    margin-bottom: 0.9375em; /* 15px -> 0.9375em */
+    margin-bottom: 0.8em; /* 15px -> 0.9375em */
 }
 
 .footer_column ul {
@@ -231,20 +231,19 @@ footer {
 }
 
 .footer_column ul li a:hover {
-    color: var(--gold);
-    text-decoration: underline;
+    color: var(--blue); 
 }
 
 .social_links img {
-    width: 1.875em; /* 30px -> 1.875em */
-    height: 1.875em; 
+    width: 2em; /* 30px -> 1.875em */
+    height: 2em; 
     margin-right: 0.625em; /* 10px -> 0.625em */
-    border-radius: 50%;
+    border-radius: 10%;
     transition: opacity 0.3s;
 }
 
 .social_links img:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* Rodapé Final e Data/Hora */
