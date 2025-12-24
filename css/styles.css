@@ -138,21 +138,20 @@ li a:hover {
     background-color: var(--dark);
     margin: 2em auto; /*centra o bloco automaticamente*/
     height: 50vh; /* Usar vh ou % (adaptado para vh para melhor visualização) */
+    overflow: hidden; /*Para não sair do conteiner*/
 }
 
 .slides {
-    width: 96%;
-    position: relative;
-    text-align: center;
-    height: 91%;
-    margin-left: 2%;
-    top: 4%;
+    width: 100%;
+    height: 100%;
+    display: none;
 }
 
 .img-slide {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Garante que a imagem cubra o contentor sem distorcer */
+    object-position: center;
 }
 
 /*=====================================
