@@ -132,12 +132,12 @@ li a:hover {
 ======================================*/
 
 .slideshow-container {
-    width: 50%; /* Mantido em % para flexibilidade */
+    width: 80%; /* Mantido em % para flexibilidade */
+    max-width: 800px; /*Fica "gigante" emm grandes ecrãs*/
     position: relative;
     background-color: var(--dark);
-    margin-left: 25%;
+    margin: 2em auto; /*centra o bloco automaticamente*/
     height: 50vh; /* Usar vh ou % (adaptado para vh para melhor visualização) */
-    margin-top: 5%;
 }
 
 .slides {
