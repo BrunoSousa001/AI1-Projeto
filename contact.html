@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/styles.css">
-        <title>Website Estático - Contactos</title>
-    </head>
-    <body>
-        <header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Fix & Shine - Contactos</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <header>
             <a id="logo" href="home.html">
                 <img class="img_logo" src="images/logo.png" alt="Fix & Shine Logo" />
                 <h1>FIX & SHINE</h1>
@@ -26,14 +29,19 @@
                 </ul>
             </nav>
         </header>
-        <main>
-            <section>
-                <h2>Fale Conosco</h2>
-                <p>Se você tiver alguma dúvida ou quiser entrar em contato, envie um e-mail para @meuemail.com ou ligue para (11) 1234-5678.</p>
-            </section>
-        </main>
-        
-        <footer>
+
+    <main>
+        <section id="contact_form">
+            <h2 class="title_apre_services">Fale Connosco</h2>
+            <p>Utilize o formulário abaixo para agendamentos ou dúvidas.</p>
+            
+            <div id="react-contact-form"></div>
+        </section>
+    </main>
+    
+    <script type="text/babel" src="js/form.js"></script>
+    
+    <footer>
             <div class="footer_wrapper">
                 <div class="footer_column">
                     <h3>Serviços</h3>
@@ -45,7 +53,7 @@
                 <div class="footer_column">
                     <h3>Contactos</h3>
                     <ul>
-                        <li><a href="contact.html">Formulário de Contacto</a></li>
+                        <li><a href="contact.html#contact_form">Formulário de Contacto</a></li>
                         <li>Localização: Rua Exemplo, 123, Viseu</li>
                         <li>Telefone: +351 912 345 678</li>
                         <li>Email: contacto@fixnshine.pt</li>
@@ -54,8 +62,8 @@
                 <div class="footer_column">
                     <h3>Siga-nos</h3>
                     <div class="social_links">
-                        <a href="https://www.facebook.com" target="_blank"><img src="images/logos/facebook.jpg" alt="Facebook"></a>
-                        <a href="https://www.instagram.com" target="_blank"><img src="images/logos/instagram.jpg" alt="Instagram"></a>
+                        <a href="https://www.facebook.com" target="_blank"><img src="images/outros/facebook.png" alt="Facebook"></a>
+                        <a href="https://www.instagram.com" target="_blank"><img src="images/outros/instagram.png" alt="Instagram"></a>
                     </div>
                     <ul>
                         <li><a href="about.html">Sobre a F&S</a></li>
