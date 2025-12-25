@@ -130,7 +130,9 @@ li a:hover {
 /*=====================================
   3. HOME E SLIDER
 ======================================*/
-
+.introdução-homepage{
+    color: var(--white);
+}
 .slideshow-container {
     width: 80%; /* Mantido em % para flexibilidade */
     max-width: 800px; /*Fica "gigante" emm grandes ecrãs*/
