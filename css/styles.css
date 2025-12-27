@@ -23,7 +23,7 @@ html, body {
 /* ---- MAIN CONTENT WRAPPER ---- */
 main {
     padding: 1.5em 1em; /* Unidade relativa: 20px -> 1.25em (arredondado) */
-    background-color: var(--light-blue); 
+    background-color: var(--white); 
     color: var(--white);
     min-height: 80vh; /* Altura mínima da viewport */
     box-sizing: border-box; /* Incluir padding e border no cálculo da largura/altura total */
@@ -130,16 +130,56 @@ li a:hover {
 /*=====================================
   3. HOME E SLIDER
 ======================================*/
-.introdução-homepage{
-    color: var(--white);
+#slides-section{
+    /*Perímetro Dourado*/
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+
+    background-color: var(--blue);
+
+    /*Tamanho da caixa*/
+    width: 90%; /*Ocupa 90% da largura*/
+    max-width: 1100px;
+    margin: 1.5em auto;
+
+    /*Espaçamento interno*/
+    padding: 3em 1em;
+    text-align: center;
+
+    box-shadow: 0 0 15px rgba(0,0,0, 0.4)
 }
+
+.introducao-homepage{
+    color: var(--white);
+    font-size: 1.1em;
+    line-height: 1.6;
+
+    max-width: 1000px;
+    margin: 0 auto 1.5em auto;
+}
+
+.introducao-homepage:first-of-type{
+    font-size: 3em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    font-style: bold;
+    color: #fffff;
+
+    /*Linha*/
+    border-bottom: 3px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}   
 .slideshow-container {
     width: 80%; /* Mantido em % para flexibilidade */
     max-width: 800px; /*Fica "gigante" emm grandes ecrãs*/
     position: relative;
+    aspect-ratio: 16/9; /*Resolve o problema, no entanto, usar imagens do mesmo tamanho*/
     background-color: var(--dark);
     margin: 2em auto; /*centra o bloco automaticamente*/
-    height: 50vh; /* Usar vh ou % (adaptado para vh para melhor visualização) */
     overflow: hidden; /*Para não sair do conteiner*/
 }
 
