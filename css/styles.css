@@ -160,19 +160,19 @@ li a:hover {
 
 .introducao-homepage:first-of-type{
     font-size: 3em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif
-    font-style: bold;
-    color: #fffff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ffff;
 
     /*Linha*/
     border-bottom: 3px solid var(--gold);
     display: inline-block;
     padding-bottom: 10px;
-    margin-top: 2em;
-    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
     text-transform: uppercase;
     letter-spacing: 2px;
-}   
+}
+
 .slideshow-container {
     width: 80%; /* Mantido em % para flexibilidade */
     max-width: 800px; /*Fica "gigante" emm grandes ecrãs*/
