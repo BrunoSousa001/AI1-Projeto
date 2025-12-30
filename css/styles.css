@@ -130,6 +130,8 @@ li a:hover {
 /*=====================================
   3. HOME E SLIDER
 ======================================*/
+
+/*1ª Parte - Introdução e Slides*/
 #slides-section{
     /*Perímetro Dourado*/
     border: 2px solid var(--gold);
@@ -139,7 +141,7 @@ li a:hover {
 
     /*Tamanho da caixa*/
     width: 90%; /*Ocupa 90% da largura*/
-    max-width: 1100px;
+    max-width: 1500px;
     margin: 1.5em auto;
 
     /*Espaçamento interno*/
@@ -157,17 +159,17 @@ li a:hover {
     text-decoration: wavy;
     letter-spacing: 3px;
     line-height: 1.6;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0px auto 1.5em;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+    padding: 0px 80px 10px 80px; /*Afeta a box-shadow e a linha*/
+
     /*Linha*/
     border-bottom: 3px solid var(--gold);
     display: inline-block;
-    padding-bottom: 10px;
     margin-top: 0.5em;
     margin-bottom: 1em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .introducao-homepage-cont{
@@ -200,18 +202,12 @@ li a:hover {
     text-transform: uppercase;
 }
 
-.titulo-slides{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2em;
-
-}
 .slideshow-container {
     width: 80%; /* Mantido em % para flexibilidade */
     max-width: 800px; /*Fica "gigante" emm grandes ecrãs*/
     position: relative;
     aspect-ratio: 16/9; /*Resolve o problema, no entanto, usar imagens do mesmo tamanho*/
-    background-color: var(--dark);
-    margin: 2em auto; /*centra o bloco automaticamente*/
+    margin: 3em auto -2em; /*centra o bloco automaticamente*/
     overflow: hidden; /*Para não sair do conteiner*/
 }
 
