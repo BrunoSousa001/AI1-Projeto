@@ -1,100 +1,112 @@
-/*=====================================
-  1. VARIÁVEIS E BASE
-======================================*/
-
-/* Definição de variávies para cores */
+/*======================================================
+  1. VARIÁVEIS E RESET GLOBAL
+======================================================*/
 :root {
-    --blue: #21304D;
-    --light-blue: #3e5b9693;
-    --gold: #C89B3C;
-    --dark: #1a1a1a;
-    --white: #ffffff;
+    /* Cores da Marca */
+    --blue: #21304D;          /* Azul Escuro (Principal) */
+    --light-blue: #3e5b9693;  /* Azul Claro (Fundo Main) */
+    --gold: #C89B3C;          /* Dourado (Destaques) */
+    
+    /* Cores Neutras */
+    --dark: #1a1a1a;          /* Fundo Body */
+    --white: #ffffff;         /* Texto Claro */
+    --gray-light: #f4f4f4;    /* Fundo de Modais/Inputs */
+    --text-dark: #333333;     /* Texto Escuro (para fundos claros) */
+}
+
+* {
+    box-sizing: border-box; /* Garante que padding não aumenta largura dos elementos */
 }
 
 html, body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; /* Fonte Segura e Uniforme */
     background-color: var(--dark); 
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Evita barras de rolagem horizontais indesejadas */
-    font-size: 100%; /* Define o tamanho base para o uso de 'em' */
+    overflow-x: hidden;
+    font-size: 16px; /* Base para rem/em */
+    line-height: 1.6;
 }
 
-/* ---- MAIN CONTENT WRAPPER ---- */
+/* Garante que elementos de formulário herdam a fonte correta */
+button, input, select, textarea {
+    font-family: inherit;
+}
+
 main {
-    padding: 1.5em 1em; /* Unidade relativa: 20px -> 1.25em (arredondado) */
-    background-color: var(--white); 
+    padding: 2em 1em;
+    background-color: var(--light-blue); 
     color: var(--white);
-    min-height: 80vh; /* Altura mínima da viewport */
-    box-sizing: border-box; /* Incluir padding e border no cálculo da largura/altura total */
+    min-height: 80vh;
 }
 
-/*=====================================
+/*======================================================
   2. HEADER E NAVEGAÇÃO
-======================================*/
-
-/* ---- HEADER GERAL ---- */
+======================================================*/
 header {
+    background-color: var(--blue); 
     color: var(--white);
-    padding: 1.25em 1.5em; /* Unidade relativa */
+    padding: 1em 1.5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--blue); 
     border-bottom: 3px solid var(--gold); 
+    position: sticky; /* Mantém o menu no topo */
+    top: 0;
+    z-index: 1000;
 }
 
-/* ---- LOGO (Contentor) ---- */
+/* --- LOGOTIPO --- */
 #logo {
-    max-width: 100%; /* Usar porcentagem para flexibilidade */
     display: flex;
     align-items: center;
-    text-decoration: none; /* Remover sublinhado do link */
-}
-
-/* Imagem do Logo (usando EM para manter a proporção com a fonte) */
-.img_logo {
-    width: 6em;     
-    height: 6em;
-    margin-right: 1em; 
-}
-
-/* Título (h1) do Logo */
-#logo h1 {
-    font-size: 1.4em; 
-    margin: 0;
+    text-decoration: none;
     color: var(--white);
-    line-height: 1;
-    font-weight: bold;
 }
 
-/* ---- MENU PRINCIPAL ---- */
+.img_logo {
+    width: 3.5em;     
+    height: 3.5em;
+    margin-right: 0.8em;
+    border-radius: 50%;
+    border: 2px solid var(--gold); /* Toque extra de marca */
+}
+
+#logo h1 {
+    font-size: 1.5em; 
+    margin: 0;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- MENU --- */
 nav ul {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 1.875em; /* 30px -> 1.875em */
+    gap: 1.5em;
     align-items: center;
 }
 
 nav ul li a {
     color: var(--white);
     text-decoration: none;
-    padding: 0.5em 0.75em; /* 8px 12px -> 0.5em 0.75em */
+    padding: 0.5em 1em;
     font-size: 1em;
-    font-weight: bold; 
+    font-weight: 600; 
     transition: all 0.3s ease; 
+    border-radius: 4px;
 }
 
-/* Efeito ao passar o rato (Requisito JS/CSS) */
-li a:hover {
+nav ul li a:hover {
     background-color: var(--gold);
     color: var(--blue); 
-    border-radius: 5px;
 }
 
-/* ---- SUBMENU - DROPDOWN ---- */
+/* --- SUBMENU (DROPDOWN) --- */
 .dropdown {
     position: relative; 
     display: inline-block;
@@ -106,16 +118,16 @@ li a:hover {
     top: 100%; 
     left: 0; 
     background-color: var(--blue);
-    min-width: 12.5em; /* 200px -> 12.5em */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0, 0.4);
-    z-index: 1000;
+    min-width: 14em;
+    box-shadow: 0px 8px 16px rgba(0,0,0, 0.3);
     border-top: 3px solid var(--gold);
     border-radius: 0 0 5px 5px;
 }
 
 .dropdown_content a {
-    padding: 0.75em 1em; /* Melhor padding interno */
+    padding: 0.8em 1em;
     display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .dropdown_content a:hover {
@@ -127,270 +139,461 @@ li a:hover {
     display: block;
 }
 
-/*=====================================
-  3. HOME E SLIDER
-======================================*/
-
-/*1ª Parte - Introdução e Slides*/
-#slides-section{
-    /*Perímetro Dourado*/
-    border: 2px solid var(--gold);
-    border-radius: 12px;
-
+/*======================================================
+  3. HOME (INTRODUÇÃO E SLIDER)
+======================================================*/
+#slides-section {
     background-color: var(--blue);
-
-    /*Tamanho da caixa*/
-    width: 90%; /*Ocupa 90% da largura*/
-    max-width: 1500px;
-    margin: 1.5em auto;
-
-    /*Espaçamento interno*/
-    padding: 3em 1em;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 3em;
+    padding: 3em 2em;
     text-align: center;
-
-    box-shadow: 0 0 15px rgba(0,0,0, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0, 0.2);
 }
 
-.introducao-homepage{
-    font-size: 2.5em;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #dab790;
+.introducao-homepage {
+    font-size: 2em;
+    color: var(--gold);
     text-transform: uppercase;
-    text-decoration: wavy;
-    letter-spacing: 3px;
-    line-height: 1.6;
-    max-width: 1200px;
-    margin: 0px auto 1.5em;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-
-    padding: 0px 80px 10px 80px; /*Afeta a box-shadow e a linha*/
-
-    /*Linha*/
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0 auto 1.5em;
+    padding-bottom: 0.5em;
     border-bottom: 3px solid var(--gold);
     display: inline-block;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
 }
 
-.introducao-homepage-cont{
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 30px;
+/* Grelha de Introdução (Texto lado a lado) */
+.introducao-homepage-cont {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 2em;
+    margin-bottom: 3em;
     text-align: left;
 }
 
-.introducao-item{
-    flex: 1; 
-    min-width: 300px; 
-    background-color: rgba(255, 255, 255, 0.05); /* Fundo subtil para destacar */
-    padding: 20px;
-    border-left: 3px solid var(--gold); /* Linha dourada à esquerda */
+.introducao-item {
+    background: rgba(255,255,255,0.05); /* Fundo subtil */
+    padding: 1.5em;
+    border-radius: 6px;
+    border-left: 4px solid var(--gold);
 }
 
-.introducao-item p{
+.introducao-titulo {
     color: var(--white);
-    line-height: 1.6;
-    font-size: 1em;
-}
-
-.introducao-titulo{
-    color: var(--gold);
     font-size: 1.2em;
-    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
     text-transform: uppercase;
 }
 
+.introducao-item p {
+    color: #ccc;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Slider */
 .slideshow-container {
-    width: 80%; /* Mantido em % para flexibilidade */
-    max-width: 800px; /*Fica "gigante" emm grandes ecrãs*/
+    width: 100%;
+    max-width: 900px;
     position: relative;
-    aspect-ratio: 16/9; /*Resolve o problema, no entanto, usar imagens do mesmo tamanho*/
-    margin: 3em auto -2em; /*centra o bloco automaticamente*/
-    overflow: hidden; /*Para não sair do conteiner*/
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--gold);
 }
 
 .slides {
-    width: 100%;
-    height: 100%;
     display: none;
-}
-
-.img-slide {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que a imagem cubra o contentor sem distorcer */
-    object-position: center;
 }
 
-/*2ª Parte - ShortCut para o Formulário*/
-#formulario-section{
-    position: relative; 
-    height: 400px;      
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    text-align: center;
-    color: var(--white);
-}
-
-.img-form{
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Correção para garantir que a imagem ocupa o slider todo */
+.slides img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /*imagem preenche tudo*/
-    z-index: 0; /*imagem fica atrás de tudo*/
+    object-fit: cover;
 }
 
-.filtro-img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    background-color: #21304da9; /* Azul escuro transparente */
-    z-index: 1; /* Fica à frente da imagem */
+/* Responsividade para Home */
+@media (max-width: 768px) {
+    .introducao-homepage-cont {
+        grid-template-columns: 1fr; /* Colunas empilham em mobile */
+        text-align: center;
+    }
+    
+    .introducao-item {
+        border-left: none;
+        border-top: 4px solid var(--gold);
+    }
 }
 
-.content-forms{
+/*======================================================
+  3.1 HOME (BANNER CALL-TO-ACTION)
+======================================================*/
+#formulario-section {
     position: relative;
-    z-index: 2;         /* Fica na frente de tudo */
-    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    height: 400px; /* Altura fixa para impacto visual */
+    margin: 0 auto 3em;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gold);
+}
 
+/* Imagem de Fundo */
+.img-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Filtro Escuro para o texto ser legível */
+.filtro-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 48, 77, 0.85); /* Azul da marca com transparência */
+    z-index: 2;
+}
+
+/* Conteúdo (Texto e Botão) */
+.content-forms {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 2em;
+    max-width: 800px;
 }
 
 .introducao-form {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 2.2em;
-    margin-bottom: 40px;
-
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
-    font-weight: normal;
-    font-style: italic;
-
     color: var(--white);
-
-    letter-spacing: 1px; 
-
-    /*Caixa*/
-    
-    border: 2px solid var(--gold); 
-    border-radius: 15px;           
-    padding: 50px 30px;            /* Espaço interno (topo/baixo, lados) */
-    
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 1.5em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.2;
 }
 
+/* Botão Grande */
 .btn-home-to-form {
-    display: inline-block;
     background-color: var(--gold);
     color: var(--blue);
-    padding: 15px 35px;
-    font-weight: bold;
+    padding: 1em 2.5em;
+    font-size: 1.1em;
+    font-weight: 800;
+    text-transform: uppercase;
     text-decoration: none;
     border-radius: 5px;
-    text-transform: uppercase;
-    transition: 0.3s;
+    transition: transform 0.3s, background-color 0.3s;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .btn-home-to-form:hover {
     background-color: var(--white);
+    color: var(--blue);
     transform: scale(1.05);
 }
 
-/*===============================
-  X. SERVIÇOS (GRELHA)
-======================================*/
+/* Responsividade do Banner */
+@media (max-width: 768px) {
+    #formulario-section {
+        height: auto;
+        padding: 3em 1em;
+    }
+    
+    .introducao-form {
+        font-size: 1.5em;
+    }
+}
 
+/*======================================================
+  4. CARTÕES DE SERVIÇOS (Layout Vertical)
+======================================================*/
 .services_grid {
     display: grid;
-    /* Grelha que ajusta as colunas (min 250px, ou 15.625em) conforme o ecrã */
-    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
-    gap: 1.25em; /* 20px -> 1.25em */
-    margin-top: 1.5em;
+    /* Grelha responsiva: colunas de min 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2em; 
+    margin-top: 2em;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card_service {
     background-color: var(--blue);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 1.25em; /* 20px -> 1.25em */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    text-align: center;
-    transition: transform 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    height: 100%;
 }
 
 .card_service:hover {
-    transform: translateY(-0.5em); /* 5px -> 0.3125em (Efeito de levitação) */
+    transform: translateY(-5px);
     border-color: var(--gold);
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.4);
 }
 
-.card_service h3 {
+.card_img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--gold);
+}
+
+.card_text {
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card_text h3 {
+    color: var(--white);
+    font-size: 1.3em;
+    margin: 0 0 0.5em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.card_text p {
+    color: #cccccc;
+    font-size: 0.95em;
+    margin: 0;
+    text-align: left;     
+}
+
+/* Seta Indicativa */
+.card_service::after {
+    content: "→";
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 1.5em;
     color: var(--gold);
-    margin-bottom: 1em; /* 10px -> 0.625em */
+    transition: transform 0.3s ease;
+    line-height: 1;
 }
 
-/*===============================
-  X. CONTACTOS
-======================================*/
-/*Titulo e introdução*/
+.card_service:hover::after {
+    transform: translateX(5px);
+    color: var(--white);
+}
+
+/*======================================================
+  5. MODAL / POP-UP (Estilo Bosch com Cores da Marca)
+======================================================*/
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); /* Fundo escuro */
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--gray-light); /* Fundo CLARO (Uniformidade com estilo Bosch) */
+    color: var(--text-dark);             /* Texto ESCURO */
+    margin: auto;
+    padding: 40px;
+    border-top: 6px solid var(--gold);   /* Linha Dourada no topo */
+    border-radius: 4px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    text-align: left;
+    animation: modalOpen 0.4s ease-out;
+}
+
+@keyframes modalOpen {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-btn {
+    color: var(--blue);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--gold);
+}
+
+/* Tipografia do Modal */
+#modalTitle {
+    color: var(--blue); /* Título na cor da marca */
+    font-size: 1.8em;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--blue);
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+#modalDesc {
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: #444;
+}
+
+/* Lista de Pontos (Bullets) */
+.modal-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.modal-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Quadrado (Bullet) personalizado */
+.modal-list li::before {
+    content: "■";
+    color: var(--gold); /* Bullet dourado */
+    font-size: 0.8em;
+    position: absolute;
+    left: 0;
+    top: 4px;
+}
+
+/* Botões do Modal */
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.btn-modal-primary {
+    background-color: var(--blue); /* Botão Azul da Marca */
+    color: var(--white);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-modal-primary:hover {
+    background-color: var(--gold); /* Hover Dourado */
+    color: var(--blue);
+}
+
+.btn-modal-secondary {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn-modal-secondary:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+/* =========================================
+   6. CONTACTOS E FORMULÁRIO (Uniformizado)
+   ========================================= */
+
+/* Header da Página de Contactos */
 .introducao-contactos {
-    
     background-color: var(--blue);
     background: linear-gradient(135deg, var(--blue) 0%, #1a253a 100%);
-    
-    padding: 4em 1em;
+    padding: 3em 1em;
     text-align: center; 
-    
-    
     border-bottom: 4px solid var(--gold); 
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+    margin-bottom: 2em;
 }
 
-/* Estilo do Título (H1) */
 .introducao-contactos h1 {
     color: var(--gold);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    font-size: 2.5em; 
+    font-size: 2.2em; 
     font-weight: 800; 
     letter-spacing: 2px;
-    margin-bottom: 15px; 
-    
-    
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px; 
+    text-transform: uppercase;
+    margin-top: 0;
 }
-
 
 .introducao-contactos p {
     color: var(--white);
-    font-size: 1.2em;
-    font-weight: 300; 
-    max-width: 700px; 
-    margin: 0 auto;   
+    font-size: 1.1em;
     opacity: 0.9;     
-    line-height: 1.6;
 }
 
-/* Layout Grid: Informações à esquerda, Form à direita */
+/* Layout Grid: Info à esquerda, Form à direita */
 .contactos-conteudo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsivo */
     gap: 40px;
     max-width: 1200px;
-    margin: 25px auto;
+    margin: 0 auto 3em auto;
     padding: 0 20px;
 }
 
-/* Informações de Contacto (Lado Esquerdo) */
+/* Informações (Esquerda) */
 .contactos-info {
-    background-color: #21304dd7;
+    background-color: var(--blue);
     padding: 30px;
     border-radius: 8px;
     height: fit-content;
-
-    justify-self: center; /*Cada célula fica no centro da respetiva coluna*/
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .contactos-info h3 {
@@ -398,41 +601,45 @@ li a:hover {
     border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 10px;
     margin-bottom: 20px;
+    margin-top: 0;
+    text-transform: uppercase;
 }
 
 .contactos-info p {
     margin-bottom: 15px;
-    font-size: 1.1em;
+    font-size: 1em;
+    color: #e0e0e0;
 }
 
 .mapa-placeholder {
     width: 100%;
-    height: 200px;
-    background-color: #ddd;
-    color: #333;
+    height: 250px;
+    background-color: #333;
+    color: #aaa;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 4px;
     margin-top: 20px;
-    font-weight: bold;
+    border: 1px dashed var(--gold);
 }
 
-/* =========================================
-    X.FORMULÁRIO REACT (Lado Direito)
-   ========================================= */
-
+/* Formulário React (Direita) */
 .contactos-form-container {
     padding: 30px;
     border-radius: 8px;
-    border-top: 5px solid var(--gold); /* Topo Dourado */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    color: var(--dark); /* Texto escuro dentro do form */
+    background-color: var(--gray-light); /* Fundo claro para contraste */
+    border-top: 5px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    color: var(--text-dark);
 }
 
 .contactos-form-container h3 {
     color: var(--blue);
+    margin-top: 0;
     margin-bottom: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .form-group {
@@ -445,6 +652,7 @@ li a:hover {
     font-weight: bold;
     margin-bottom: 5px;
     color: var(--blue);
+    font-size: 0.9em;
 }
 
 .form-group input, 
@@ -455,33 +663,36 @@ li a:hover {
     border-radius: 4px;
     font-family: inherit;
     font-size: 1em;
-    background-color: #f9f9f9;
+    background-color: #fff;
+    transition: border-color 0.3s;
 }
 
-.form-group textarea{
+.form-group textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
 }
 
 .form-group input:focus, 
+.form-group select:focus, 
 .form-group textarea:focus {
     outline: none;
     border-color: var(--gold);
-    background-color: #fff;
+    box-shadow: 0 0 5px rgba(200, 155, 60, 0.3);
 }
 
-/* Botão de Enviar */
+/* Botão Enviar */
 .btn-submit {
     width: 100%;
     padding: 15px;
     background-color: var(--blue);
     color: var(--white);
     border: none;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s;
     border-radius: 4px;
+    text-transform: uppercase;
     margin-top: 10px;
 }
 
@@ -490,7 +701,7 @@ li a:hover {
     color: var(--blue);
 }
 
-/* Mensagens de Feedback */
+/* Mensagens de Sucesso/Erro */
 .msg-success {
     margin-top: 20px;
     padding: 15px;
@@ -499,6 +710,7 @@ li a:hover {
     border: 1px solid #c3e6cb;
     border-radius: 4px;
     text-align: center;
+    font-weight: bold;
 }
 
 .msg-error {
@@ -509,36 +721,37 @@ li a:hover {
     border: 1px solid #f5c6cb;
     border-radius: 4px;
     text-align: center;
+    font-weight: bold;
 }
 
-/*=====================================
-  
-X. FOOTER
-======================================*/
-
+/*======================================================
+  7. FOOTER
+======================================================*/
 footer {
     background-color: var(--blue);
     color: var(--white);
-    padding: 2em 1em 0.5em; /* 30px, 20px, 10px - 1.875em 1.25em 0.625em*/
+    padding: 3em 1em 1em;
     width: 100%;
-    border-top: 3px solid var(--gold);
+    border-top: 4px solid var(--gold);
+    margin-top: auto; /* Empurra o footer para o fundo se houver pouco conteúdo */
 }
 
 .footer_wrapper {
     display: grid;
-    /* 3 colunas, ajusta-se para que cada uma tenha pelo menos 12.5em (200px) */
-    grid-template-columns: repeat(auto-fit, minmax(12.5em, 1fr)); 
-    gap: 1.875em; /* 30px -> 1.875em */
-    margin-bottom: 1.25em; /* 20px -> 1.25em */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 2em;
+    margin-bottom: 2em;
     max-width: 1200px; 
-    margin: 0 auto 1.25em auto;
+    margin: 0 auto 2em auto;
 }
 
 .footer_column h3 {
     color: var(--gold);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 0.5em; /* 8px -> 0.5em */
-    margin-bottom: 0.8em; /* 15px -> 0.9375em */
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    text-transform: uppercase;
 }
 
 .footer_column ul {
@@ -547,44 +760,45 @@ footer {
 }
 
 .footer_column ul li {
-    margin-bottom: 0.5em; /* 8px -> 0.5em */
-    font-size: 0.9em;
+    margin-bottom: 0.8em;
+    font-size: 0.95em;
 }
 
 .footer_column ul li a {
-    color: var(--white);
+    color: #e0e0e0;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .footer_column ul li a:hover {
-    color: var(--blue); 
+    color: var(--gold); 
+}
+
+.social_links {
+    display: flex;
+    gap: 10px;
 }
 
 .social_links img {
-    width: 2em; /* 30px -> 1.875em */
-    height: 2em; 
-    margin-right: 0.625em; /* 10px -> 0.625em */
-    border-radius: 10%;
-    transition: opacity 0.3s;
+    width: 2.5em;
+    height: 2.5em; 
+    border-radius: 8px;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .social_links img:hover {
-    opacity: 0.7;
+    opacity: 0.8;
+    transform: scale(1.1);
 }
 
-/* Rodapé Final e Data/Hora */
 .footer_bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 0.625em; /* 10px -> 0.625em */
+    padding-top: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8em;
-}
-
-/* O ID 'datetime' está agora contido no footer_bottom */
-#datetime {
-    text-align: left;
-    padding: 0; 
-    margin: 0;
+    font-size: 0.85em;
+    color: #aaa;
+    max-width: 1200px;
+    margin: 0 auto;
 }
