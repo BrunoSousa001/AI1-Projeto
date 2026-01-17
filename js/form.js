@@ -1,4 +1,4 @@
-const { useState, useEffect } = React;
+const { useState} = React;
 
 function ContactForm() {
     // Estado do formulário
@@ -43,7 +43,7 @@ function ContactForm() {
     };
 
     return (
-        <div className="contact-form-container">
+        <div className="contactos-form-container">
             <form onSubmit={handleSubmit} className="react-form">
                 <div className="form-group">
                     <label>Nome *</label>
@@ -84,5 +84,5 @@ function ContactForm() {
 }
 
 // Renderizar o componente
-const root = ReactDOM.createRoot(document.getElementById('react-contact-form'));
+const root = ReactDOM.createRoot(document.getElementById('react-contacto-form'));
 root.render(<ContactForm />);

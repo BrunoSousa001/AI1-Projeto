@@ -302,7 +302,7 @@ li a:hover {
 }
 
 /*===============================
-  4. SERVIÇOS (GRELHA)
+  X. SERVIÇOS (GRELHA)
 ======================================*/
 
 .services_grid {
@@ -332,8 +332,188 @@ li a:hover {
     margin-bottom: 1em; /* 10px -> 0.625em */
 }
 
+/*===============================
+  X. CONTACTOS
+======================================*/
+/*Titulo e introdução*/
+.introducao-contactos {
+    
+    background-color: var(--blue);
+    background: linear-gradient(135deg, var(--blue) 0%, #1a253a 100%);
+    
+    padding: 4em 1em;
+    text-align: center; 
+    
+    
+    border-bottom: 4px solid var(--gold); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+}
+
+/* Estilo do Título (H1) */
+.introducao-contactos h1 {
+    color: var(--gold);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-size: 2.5em; 
+    font-weight: 800; 
+    letter-spacing: 2px;
+    margin-bottom: 15px; 
+    
+    
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+
+.introducao-contactos p {
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: 300; 
+    max-width: 700px; 
+    margin: 0 auto;   
+    opacity: 0.9;     
+    line-height: 1.6;
+}
+
+/* Layout Grid: Informações à esquerda, Form à direita */
+.contactos-conteudo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+/* Informações de Contacto (Lado Esquerdo) */
+.contactos-info {
+    background-color: #21304dd7;
+    padding: 30px;
+    border-radius: 8px;
+    height: fit-content;
+
+    justify-self: center; /*Cada célula fica no centro da respetiva coluna*/
+}
+
+.contactos-info h3 {
+    color: var(--gold);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.contactos-info p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.mapa-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* =========================================
+    X.FORMULÁRIO REACT (Lado Direito)
+   ========================================= */
+
+.contactos-form-container {
+    padding: 30px;
+    border-radius: 8px;
+    border-top: 5px solid var(--gold); /* Topo Dourado */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: var(--dark); /* Texto escuro dentro do form */
+}
+
+.contactos-form-container h3 {
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--blue);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+    background-color: #f9f9f9;
+}
+
+.form-group textarea{
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background-color: #fff;
+}
+
+/* Botão de Enviar */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--gold);
+    color: var(--blue);
+}
+
+/* Mensagens de Feedback */
+.msg-success {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.msg-error {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    text-align: center;
+}
+
 /*=====================================
-  5. FOOTER
+  
+X. FOOTER
 ======================================*/
 
 footer {
@@ -408,49 +588,3 @@ footer {
     padding: 0; 
     margin: 0;
 }
-
-/* ---- REACT FORM STYLE ---- */
-.contact-form-container {
-    max-width: 600px;
-    margin: 2em auto;
-    background: var(--blue);
-    padding: 2em;
-    border-radius: 8px;
-    border-left: 5px solid var(--gold);
-}
-
-.form-group {
-    margin-bottom: 1.5em;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 0.5em;
-    color: var(--gold);
-}
-
-.form-group input, .form-group select, .form-group textarea {
-    padding: 0.8em;
-    border-radius: 4px;
-    border: none;
-    background: #f4f4f4;
-}
-
-.btn-submit {
-    background-color: var(--gold);
-    color: var(--blue);
-    padding: 1em 2em;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-}
-
-.btn-submit:hover {
-    filter: brightness(1.2);
-}
-
-.msg-success { color: #4CAF50; margin-top: 1em; }
-.msg-error { color: #f44336; margin-top: 1em; }
