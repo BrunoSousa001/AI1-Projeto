@@ -1,220 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/styles.css">
-        <title>F&S - Serviços</title>
-    </head>
-    <body>
-        <header>
-            <a id="logo" href="home.html">
-                <img class="img_logo" src="images/logo.png" alt="Fix & Shine Logo" />
-                <h1>FIX & SHINE</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>F&S - Serviços</title>
+</head>
+<body>
+    <header>
+        <a id="logo" href="home.html">
+            <img class="img_logo" src="images/logo.png" alt="Fix & Shine Logo" />
+            <h1>FIX & SHINE</h1>
+        </a>
+        <nav>
+            <ul id="menu">
+                <li><a href="home.html">Início</a></li> 
+                <li><a href="about.html">Sobre</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">Serviços</a>
+                    <div class="dropdown_content">
+                        <a href="mecanica.html">Área de Mecânica</a>
+                        <a href="estetica.html">Área de Estética</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section style="text-align: center; margin-bottom: 3em;">
+            <h2 class="title_apre_services">Os Nossos Serviços</h2>
+            <p>Selecione a área que procura para ver os serviços detalhados.</p>
+        </section>
+
+        <div class="services_grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            
+            <a href="mecanica.html" class="card_service" style="text-decoration: none; height: auto;">
+                <img src="images/home/slides/slide1.jpg" alt="Mecânica Geral" class="card_img" style="height: 250px;">
+                <div class="card_text">
+                    <h3>Área de Mecânica</h3>
+                    <p>Manutenção, reparação de motores, diagnóstico e segurança.</p>
+                    <span style="color: var(--gold); font-weight: bold; margin-top: 10px; display: block;">Ver Serviços Mecânicos &rarr;</span>
+                </div>
             </a>
-            <nav>
-                <ul id="menu">
-                    <li><a href="home.html">Início</a></li> <li><a href="about.html">Sobre</a></li>
-                    <li class="dropdown">
-                        <a href="services.html" class="dropbtn">Serviços</a>
-                        <div class="dropdown_content">
-                            <a href="mecanica.html">Área de Mecânica</a>
-                            <a href="estetica.html">Área de Estética</a>
-                        </div>
-                    </li>
-                    <li><a href="contact.html">Contactos</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section class="services">
-                <h2 class="title_apre_services">Serviços Mecânicos</h2>
-                <div class="services_grid">
 
-                <!--<div class="card_service" onclick="openModal(' nome no service.js ')">
-                        <img src="images/services/" alt="..." class="card_img"> 
-                        <div class="card_text">
-                            <h3>Título</h3>
-                            <p>Descrição Breve</p>
-                            </div>
-                    </div> -->
-
-                    <div class="card_service" onclick="openModal('ac')">
-                        <img src="images/services/ac.jpg" alt="A/C e Aquecimento" class="card_img">
-                        <div class="card_text">
-                            <h3>A/C e Aquecimento</h3>
-                            <p>Manutenção e recarga para conforto térmico total.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('chapas')">
-                        <img src="images/services/chapas.jpg" alt="Chapas e Carroçaria" class="card_img">
-                        <div class="card_text">
-                            <h3>Chapas e Carroçaria</h3>
-                            <p>Reparação de mossas e danos estruturais.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('travoes')">
-                        <img src="images/services/travoes.jpg" alt="Travões" class="card_img">
-                        <div class="card_text">
-                            <h3>Travões</h3>
-                            <p>Segurança máxima com revisão de discos e pastilhas.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('diagnostico')">
-                        <img src="images/services/diagnostico.jpg" alt="Diagnóstico" class="card_img">
-                        <div class="card_text">
-                            <h3>Diagnóstico Computorizado</h3>
-                            <p>Identificação precisa de avarias eletrónicas.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('eletrica')">
-                        <img src="images/services/eletrica.jpg" alt="Parte Elétrica" class="card_img">
-                        <div class="card_text">
-                            <h3>Parte Elétrica</h3>
-                            <p>Baterias, alternadores e reparação de cablagens.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('motor')">
-                        <img src="images/services/motor.jpg" alt="Motor" class="card_img">
-                        <div class="card_text">
-                            <h3>Motor</h3>
-                            <p>Reparação profunda e manutenção de correias.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('suspensao')">
-                        <img src="images/services/suspensao.jpg" alt="Suspensão" class="card_img">
-                        <div class="card_text">
-                            <h3>Suspensão</h3>
-                            <p>Amortecedores e alinhamento para uma condução suave.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('transmissao')">
-                        <img src="images/services/transmissao.jpg" alt="Transmissão" class="card_img">
-                        <div class="card_text">
-                            <h3>Transmissão</h3>
-                            <p>Serviços de caixa de velocidades e embraiagem.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('oleo')">
-                        <img src="images/services/oleo.jpg" alt="Troca de Óleo" class="card_img">
-                        <div class="card_text">
-                            <h3>Troca de Óleo</h3>
-                            <p>Lubrificação essencial para a vida do motor.</p>
-                        </div>
-                    </div>
+            <a href="estetica.html" class="card_service" style="text-decoration: none; height: auto;">
+                <img src="images/home/slides/slide2.jpg" alt="Estética Automóvel" class="card_img" style="height: 250px;">
+                <div class="card_text">
+                    <h3>Estética e Limpeza</h3>
+                    <p>Lavagens detalhadas, polimentos, restauro de interiores e wraps.</p>
+                    <span style="color: var(--gold); font-weight: bold; margin-top: 10px; display: block;">Ver Serviços de Estética &rarr;</span>
                 </div>
-            </section>
+            </a>
 
-            <hr class="section-divider" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gold), rgba(0, 0, 0, 0)); margin: 3em 0;">
-
-            <section class="services">
-                <h2 class="title_apre_services">Estética e Limpeza</h2>
-                <div class="services_grid">
-                    
-                    <div class="card_service" onclick="openModal('pintura')">
-                        <img src="images/services/pintura.jpg" alt="Pintura" class="card_img">
-                        <div class="card_text">
-                            <h3>Pintura</h3>
-                            <p>Restauro de cor original e pintura personalizada.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('wraps')">
-                        <img src="images/services/wraps.jpg" alt="Wraps" class="card_img">
-                        <div class="card_text">
-                            <h3>Car Wraps</h3>
-                            <p>Mudança de visual completa com vinil de alta qualidade.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('jantes')">
-                        <img src="images/services/jantes.jpg" alt="Jantes e Pinças" class="card_img">
-                        <div class="card_text">
-                            <h3>Jantes e Pinças</h3>
-                            <p>Reparação, pintura de jantes e personalização de pinças.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('estofos')">
-                        <img src="images/services/estofos.jpg" alt="Estofos" class="card_img">
-                        <div class="card_text">
-                            <h3>Estofos e Detalhes</h3>
-                            <p>Tratamento de peles e restauro de interiores.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('lavagem_ext')">
-                        <img src="images/services/lavagem_ext.jpg" alt="Lavagem Exterior" class="card_img">
-                        <div class="card_text">
-                            <h3>Lavagem Exterior</h3>
-                            <p>Lavagem manual detalhada com produtos premium.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('limpeza_int')">
-                        <img src="images/services/limpeza_int.jpg" alt="Limpeza Interior" class="card_img">
-                        <div class="card_text">
-                            <h3>Limpeza Interior</h3>
-                            <p>Aspiração profunda e higienização de habitáculo.</p>
-                        </div>
-                    </div>
-
-                    <div class="card_service" onclick="openModal('polimento')">
-                        <img src="images/services/polimento.jpg" alt="Polimento" class="card_img">
-                        <div class="card_text">
-                            <h3>Polimento</h3>
-                            <p>Correção de pintura e proteção cerâmica.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <div id="serviceModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal()">×</span>
-                
-                <div class="modal-header">
-                    <h2 id="modalTitle">Título do Serviço</h2>
-                </div>
-
-                <p id="modalDesc">Descrição do serviço.</p>
-                
-                <ul id="modalList" class="modal-list">
-                    </ul>
-                
-                <div class="modal-actions">
-                    <a href="contact.html" class="btn-modal-primary">
-                        Marcar Manutenção
-                    </a>
-                    <a href="https://maps.google.com" target="_blank" class="btn-modal-secondary">
-                        Encontre uma oficina &rarr;
-                    </a>
-                </div>
-            </div>
         </div>
-
-        <footer>
-           <div class="footer_wrapper">
+    </main>
+    
+    <footer>
+        <div class="footer_wrapper">
             <div class="footer_column">
                 <h3>Serviços</h3>
                 <ul>
                     <li><a href="mecanica.html">Área de Mecânica</a></li>
                     <li><a href="estetica.html">Área de Estética</a></li>
-                    </ul>
+                </ul>
             </div>
             <div class="footer_column">
                 <h3>Contactos</h3>
                 <ul>
-                    <li><a href="contact.html#contact_form">Formulário de Contacto</a></li>
+                    <li><a href="contact.html">Formulário de Contacto</a></li>
                     <li>Localização: Rua Exemplo, 123, Viseu</li>
                     <li>Telefone: +351 912 345 678</li>
                     <li>Email: contacto@fixnshine.pt</li>
@@ -233,10 +88,9 @@
         </div>
         <div class="footer_bottom">
             <div id="datetime"></div> 
-            <p>&copy; 2024 Fix & Shine. Todos os direitos reservados.</p>
+            <p>© 2024 Fix & Shine. Todos os direitos reservados.</p>
         </div>
         <script src="js/datetime.js"></script>
-        <script src="js/services.js"></script> 
-        </footer>
-    </body>
+    </footer>
+</body>
 </html>
