@@ -65,8 +65,8 @@ header {
 }
 
 .img_logo {
-    width: 3.5em;     
-    height: 3.5em;
+    width: 5em;     
+    height: 5em;
     margin-right: 0.8em;
     border-radius: 50%;
     border: 2px solid var(--gold); /* Toque extra de marca */
@@ -103,7 +103,7 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: var(--gold);
-    color: var(--blue); 
+    color: var(--blue);
 }
 
 /* --- SUBMENU (DROPDOWN) --- */
@@ -120,7 +120,7 @@ nav ul li a:hover {
     background-color: var(--blue);
     min-width: 14em;
     box-shadow: 0px 8px 16px rgba(0,0,0, 0.3);
-    border-top: 3px solid var(--gold);
+    /*border-top: 3px solid var(--gold);*/
     border-radius: 0 0 5px 5px;
 }
 
@@ -162,7 +162,7 @@ nav ul li a:hover {
     letter-spacing: 2px;
     margin: 0 auto 1.5em;
     padding-bottom: 0.5em;
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
     display: inline-block;
 }
 
@@ -200,13 +200,13 @@ nav ul li a:hover {
 /* Slider */
 .slideshow-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 600px;
     position: relative;
     aspect-ratio: 16/9;
     margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
-    border: 2px solid var(--gold);
+    /*border: 1px solid var(--gold);*/
 }
 
 .slides {
@@ -235,9 +235,101 @@ nav ul li a:hover {
     }
 }
 
-/*======================================================
-  3.1 HOME (BANNER CALL-TO-ACTION)
-======================================================*/
+/* --- BANNERS DAS ÁREAS (MECÂNICA E ESTÉTICA) --- */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: flex-end; /* CRUCIAL: Empurra o conteúdo para a DIREITA */
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 3em;
+    /* Ajuste para anular o padding do main */
+    margin-left: -1em;
+    margin-right: -1em;
+    width: calc(100% + 2em);
+    margin-top: -2em;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Gradiente invertido para escurecer mais o lado direito onde está o texto */
+    background: linear-gradient(270deg, rgba(33, 48, 77, 0.95) 0%, rgba(33, 48, 77, 0.4) 100%);
+    z-index: 1;
+    border-bottom: 3px solid var(--gold);
+}
+
+.hero-content {
+    position: relative; 
+    z-index: 2; 
+    color: var(--white);
+    padding-right: 10%; /* Espaço da margem direita */
+    padding-left: 5%; 
+    max-width: 800px;
+    text-align: right; /* Alinha o texto e o botão à direita */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Garante que elementos flexíveis fiquem à direita */
+}
+
+.hero-accent-line {
+    width: 80px; 
+    height: 5px; 
+    background-color: var(--gold); 
+    margin-bottom: 20px;
+    /* Não precisa de margem auto se usarmos align-items: flex-end no pai */
+}
+
+.hero-content h1 { 
+    font-size: 2.8em; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    margin: 0 0 10px 0; 
+}
+
+.hero-content p { 
+    font-size: 1.3em; 
+    margin: 0; 
+    opacity: 0.9; 
+    margin-bottom: 25px; 
+}
+
+/* Imagens de Fundo (Caminhos Corrigidos) */
+.banner-mecanica-img { 
+    background-image: url('../images/services/mecanica_banner.jpg'); 
+}
+.banner-estetica-img { 
+    background-image: url('../images/services/estetica_banner.jpg'); 
+}
+.banner-about-img { 
+    background-image: url('../images/garagem.jpeg'); 
+}
+.banner-services-img { 
+    background-image: url('../images/services/services.jpg');
+}
+
+/* Botão dos Banners */
+.btn-hero {
+    display: inline-block; 
+    padding: 12px 30px;
+    background-color: var(--gold); 
+    color: var(--blue); 
+    font-weight: 800;
+    text-transform: uppercase; 
+    text-decoration: none; 
+    border-radius: 4px;
+    border: 2px solid var(--gold); 
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover { 
+    background-color: transparent; 
+    color: var(--gold); 
+}
+
 #formulario-section {
     position: relative;
     width: 100%;
@@ -314,19 +406,6 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Responsividade do Banner */
-@media (max-width: 768px) {
-    #formulario-section {
-        height: auto;
-        padding: 3em 1em;
-    }
-    
-    .introducao-form {
-        font-size: 1.5em;
-    }
-}
-
-
 .team-member img {
     width: 200px;
     height: 200px;
@@ -357,6 +436,7 @@ nav ul li a:hover {
 /*======================================================
   4. Sobre
 ======================================================*/
+
 .titulo-subtitulo {
     /* Layout e Fundo */
     height: 350px;
@@ -416,7 +496,7 @@ nav ul li a:hover {
     align-items: center;     
     text-align: center;     
 
-    padding: 100px 20px;     /* Espaço em cima e em baixo*/
+    padding: 20px 20px;     /* Espaço em cima e em baixo*/
     color: var(--white);     /* Cor do texto*/
 }
 
@@ -663,6 +743,7 @@ nav ul li a:hover {
     font-style: italic;      /* Itálico para dar estilo */
     font-weight: 500;
 }
+
 /*======================================================
   5. CARTÕES DE SERVIÇOS (Layout Vertical)
 ======================================================*/
@@ -761,7 +842,7 @@ nav ul li a:hover {
 }
 
 .modal-content {
-    background-color: var(--gray-light); /* Fundo CLARO (Uniformidade com estilo Bosch) */
+    background-color: var(--gray-light);
     color: var(--text-dark);             /* Texto ESCURO */
     margin: auto;
     padding: 40px;
@@ -903,7 +984,6 @@ nav ul li a:hover {
     width: 100%;             /* Em mobile ocupam tudo */
 }
 
-
 #react-contacto-form{
     max-width: 1200px;
     width: 100%; 
@@ -943,7 +1023,6 @@ nav ul li a:hover {
     opacity: 0.9;
     line-height: 1.6;
 }
-
 
 /* Formulário React */
 .contactos-form-container {
