@@ -354,7 +354,8 @@ nav ul li a.active {
 /* Classes específicas apenas para trocar a imagem de fundo */
 .banner-mecanica-img { background-image: url('../images/services/mecanica_banner.jpg'); }
 .banner-estetica-img { background-image: url('../images/services/estetica_banner.jpg'); }
-.banner-about-img { background-image: url('../images/garagem.jpeg'); }
+.banner-services-img { background-image: url('../images/services/services.jpg'); }
+.banner-about-img { background-image: url('../images/garagem.jpg'); }
 
 /* Botão dos Banners */
 .btn-hero {
