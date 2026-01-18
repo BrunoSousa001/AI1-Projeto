@@ -355,7 +355,7 @@ nav ul li a.active {
 .banner-mecanica-img { background-image: url('../images/services/mecanica_banner.jpg'); }
 .banner-estetica-img { background-image: url('../images/services/estetica_banner.jpg'); }
 .banner-services-img { background-image: url('../images/services/services.jpg'); }
-.banner-about-img { background-image: url('../images/garagem.jpg'); }
+.banner-about-img { background-image: url('../images/garagem.jpeg'); }
 
 /* Botão dos Banners */
 .btn-hero {
@@ -1150,4 +1150,5 @@ footer {
     color: #aaa;
     max-width: 1200px;
     margin: 0 auto;
+
 }
