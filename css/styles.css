@@ -618,6 +618,17 @@ nav ul li a.active {
     margin-bottom: 50px;
 }
 
+/*Subtítulo da Euipa*/
+.subtitulo-equipa{
+    color: var(--blue);
+    font-size: 1.2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 50px;     /* Espaço antes das fotos */
+    position: relative;
+    display: block;
+}
+
 .equipa-grid {
     display: flex;           
     justify-content: center; 
