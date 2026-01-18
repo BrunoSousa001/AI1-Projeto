@@ -16,11 +16,10 @@
             <ul id="menu">
                 <li><a href="home.html">Início</a></li> 
                 <li><a href="about.html">Sobre</a></li>
-                <li class="dropdown">
-                    <a href="services.html" class="dropbtn">Serviços</a>
+                <li class="dropdown"><a href="services.html" class="dropbtn">Serviços</a>
                     <div class="dropdown_content">
                         <a href="mecanica.html">Área de Mecânica</a>
-                        <a href="estetica.html">Área de Estética</a>
+                        <a href="estetica.html">Estética e Limpeza</a>
                     </div>
                 </li>
                 <li><a href="contact.html">Contactos</a></li>
@@ -28,10 +27,15 @@
         </nav>
     </header>
     <main>
+        <section class="hero-banner banner-mecanica-img">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-accent-line"></div> <h1>Área de Mecânica</h1>
+                <p>Tecnologia de diagnóstico avançada e especialistas para manter o seu veículo em perfeitas condições.</p>
+                <a href="contact.html" class="btn-home-to-form">Agende Agora</a>
+            </div>
+        </section>
         <section>
-            <h2 class="title_apre_services">Área de Mecânica</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2em;">A "Fix & Shine" garante um serviço de mecânica completa. A nossa equipa utiliza tecnologia de diagnóstico avançada para manter o seu veículo em perfeitas condições.</p>
-            
             <div class="services_grid">
                 <div class="card_service" onclick="openModal('ac')">
                     <img src="images/services/ac.jpg" alt="A/C e Aquecimento" class="card_img">
@@ -129,7 +133,7 @@
                 <h3>Serviços</h3>
                 <ul>
                     <li><a href="mecanica.html">Área de Mecânica</a></li>
-                    <li><a href="estetica.html">Área de Estética</a></li>
+                    <li><a href="estetica.html">Estética e Limpeza</a></li>
                 </ul>
             </div>
             <div class="footer_column">
@@ -154,7 +158,7 @@
         </div>
         <div class="footer_bottom">
             <div id="datetime"></div> 
-            <p>© 2024 Fix & Shine. Todos os direitos reservados.</p>
+            <p>© 2026 Fix & Shine. Todos os direitos reservados.</p>
         </div>
         <script src="js/datetime.js"></script>
         <script src="js/services.js"></script>
