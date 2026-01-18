@@ -355,7 +355,316 @@ nav ul li a:hover {
 }
 
 /*======================================================
-  4. CARTÕES DE SERVIÇOS (Layout Vertical)
+  4. Sobre
+======================================================*/
+.titulo-subtitulo {
+    /* Layout e Fundo */
+    height: 350px;
+    display: flex;
+    flex-direction: column; /* Empilha o H1 e H2 */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center;
+    
+    /* Fundo*/
+    background-color: var(--blue); 
+    background-size: cover;
+    background-position: center;
+    
+    color: var(--white);
+    border-bottom: 4px solid var(--gold); 
+}
+
+/* Título Principal*/
+.titulo-subtitulo h1 {
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-size: 3em;       
+    font-weight: 800;     /* Extra Bold */
+    text-transform: uppercase;
+    color: var(--white);  /* Contraste */
+    margin-bottom: 10px;  /* Espaço para o subtítulo */
+    
+    /* Sombra do fundo */
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+}
+
+/* O Subtítulo */
+.titulo-subtitulo h2 {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.5em;     /* Metade do tamanho do H1 */
+    font-weight: 400;    
+    color: var(--gold);   /* Destacar "Engenharia" */
+    
+    letter-spacing: 3px;  /* Espaçamento largo*/
+    text-transform: uppercase;
+    
+    /* Linha*/
+    display: inline-block;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding: 10px 20px;
+}
+
+/*Corpo (imagem com as mesmas configurações da imagem da Página de início)*/
+.historia{
+    position: relative;
+    
+    /* Layout do Texto no Centro */
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;     
+
+    padding: 100px 20px;     /* Espaço em cima e em baixo*/
+    color: var(--white);     /* Cor do texto*/
+}
+
+/* Contentor do Texto*/
+.historia-texto {
+    max-width: 800px;        /* Limita a largura*/
+    margin: 0 auto;
+    z-index: 3;
+}
+
+/* Título - Corpo*/
+.texto-titulo {
+    color: var(--gold);      
+    font-size: 2.5em;       
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 3;
+}
+
+/* Linha decorativa*/
+.texto-titulo::after {
+    content: '';
+    display: block;
+    width: 550px;
+    height: 4px;
+    background-color: var(--gold);
+    margin: 15px auto;       /* Centrar o bloco automaticamente */
+    border-radius: 2px;
+}
+
+/* Parágrafos */
+.historia-texto p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    /* Transparência mínima - suavizar */
+    color: rgba(255, 255, 255, 0.95); 
+    margin-bottom: 25px;
+}
+
+/* Destaque Dourado */
+.historia-texto strong {
+    color: var(--gold);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/*BARRA DE ESTATÍSTICAS*/
+.estatisticas {
+    /* Fundo e Layout */
+   padding: 60px 20px;            /* Espaçamento vertical generoso */
+    
+    /* Alinhar os itens */
+    display: flex;
+    justify-content: center;       /* Centra o grupo na página */
+    gap: 80px;                     /* Espaço grande entre cada estatística */
+    flex-wrap: wrap;               /* Responsividade - "cair" para baixo */
+
+    max-width: 1200px;
+    margin: 40px auto;              /* Centra o bloco*/ 
+
+    /*Bordas*/
+    border: 3px solid var(--gold);
+    border-radius: 15px;
+
+    /*Saliência*/
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* O Contentor de cada item individual */
+.estatisticas-item {
+    display: flex;
+    flex-direction: column;        /* Número em cima, texto em baixo */
+    align-items: center;           
+    text-align: center;
+    min-width: 200px;              /* Garante que não ficam esmagados */
+}
+
+/* O Número (+10, +5000) */
+.estatisticas-numero {
+    font-size: 3.5em;              
+    font-weight: 800;             
+    color: var(--gold);            
+    line-height: 1;                /* Remove espaço extra acima/abaixo */
+    margin-bottom: 10px;           /* Afasta da descrição */
+    
+    /*"Levantar" o número do fundo */
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+/* A Descrição (Anos de Experiência, etc.) */
+.estatisticas-descricao {
+    color: var(--white);
+    font-size: 1.1em;
+    font-weight: 300;              
+    text-transform: uppercase;     
+    letter-spacing: 2px;           
+    opacity: 0.9;
+}
+
+/* Valores ()Missã, visã, Valores*/
+.valores {
+    /* Layout em Grelha */
+    display: grid;
+    /*Cria colunas automáticas - nunca menores que 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;               /* Espaço entre os cartões */
+    
+    padding: 80px 20px;      /* Margens internas */
+    max-width: 1200px;       
+    margin: 0 auto;      
+}
+
+/* Estilo de cada Cartão */
+.valores-cartao {
+    background-color: #fff;  
+    padding: 40px;           /* Espaço interno */
+    
+    /*Borda lateral*/
+    border-left: 5px solid var(--gold); 
+    
+    /* Sombra para destacar do fundo branco*/
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    
+    /* Animação ao passar o rato */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    border-radius: 4px;    
+}
+
+/* Efeito Hover*/
+.valores-cartao:hover {
+    transform: translateY(-10px); /* O cartão "flutua"*/
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra aumenta */
+}
+
+/* Títulos*/
+.valores-cartao h3 {
+    color: var(--blue);
+    font-size: 1.5em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Parágrafos */
+.valores-cartao p {
+    color: #555;            
+    line-height: 1.6;      
+    font-size: 1.1em;
+}
+
+/* EQUIPA */
+.equipa {
+    padding: 80px 20px;
+    text-align: center;      
+    background-color: #f9f9f9; 
+}
+
+/* Título da Equipa */
+.titulo-equipa {
+    color: var(--blue);
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 10px;     /* Espaço antes do subtitulo */
+    position: relative;
+    display: block;
+}
+
+/*Subtítulo da Euipa*/
+.subtitulo-equipa{
+    color: var(--blue);
+    font-size: 1.2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 50px;     /* Espaço antes das fotos */
+    position: relative;
+    display: block;
+}
+
+/* O "Grid" Membros */
+.equipa-grid {
+    display: flex;           /* Alinhar itens lado a lado */
+    justify-content: center; /* Centra os membros na página */
+    gap: 50px;               /* Espaço entre cada pessoa */
+    flex-wrap: wrap;         /* "Cair"" para baixo */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cartão Individual*/
+.equipa-membro {
+    width: 280px;            /* Largura fixa para o cartão */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Pequena animação ao passar o rato no cartão inteiro */
+    transition: transform 0.3s ease;
+}
+
+.equipa-membro:hover {
+    transform: translateY(-5px); /* Sobe ligeiramente */
+}
+
+/* IMAGENS dos LIDERES*/
+.equipa-membro img {
+    /* Tamanho Fixo (igual para todos) */
+    width: 220px;
+    height: 220px;
+    
+    /* Faz com que a imagem preencha o quadrado de 220x220 
+       cortando o excesso nas bordas, sem distorcer a cara da pessoa */
+    object-fit: cover; 
+    
+    /* Alinhar pelo topo, para "focar" na cara*/
+    object-position: top center;
+    
+    border-radius: 50%;      /* Faz a imagem redonda*/
+    border: 4px solid var(--gold); /* Borda da marca */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Sombra para dar destaque */
+    margin-bottom: 20px;     /* Espaço entre foto e nome */
+}
+
+/* Nome do Membro */
+.equipa-membro h4 {
+    color: var(--blue);
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Cargo / Função */
+.equipa-membro .role {
+    color: #666;             /* Cinza para hierarquia visual menor */
+    font-size: 1em;
+    font-style: italic;      /* Itálico para dar estilo */
+    font-weight: 500;
+}
+/*======================================================
+  5. CARTÕES DE SERVIÇOS (Layout Vertical)
 ======================================================*/
 .services_grid {
     display: grid;
@@ -434,7 +743,7 @@ nav ul li a:hover {
 }
 
 /*======================================================
-  5. MODAL / POP-UP (Estilo Bosch com Cores da Marca)
+  6. MODAL / POP-UP (Estilo Bosch com Cores da Marca)
 ======================================================*/
 .modal {
     display: none; 
@@ -575,7 +884,7 @@ nav ul li a:hover {
 }
 
 /* =========================================
-   6. CONTACTOS E FORMULÁRIO (Uniformizado)
+   7. CONTACTOS E FORMULÁRIO (Uniformizado)
    ========================================= */
 
 /* Header da Página de Contactos */
@@ -739,7 +1048,7 @@ nav ul li a:hover {
 }
 
 /*======================================================
-  7. FOOTER
+  8. FOOTER
 ======================================================*/
 footer {
     background-color: var(--blue);
