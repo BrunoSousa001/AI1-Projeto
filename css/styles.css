@@ -3,32 +3,32 @@
 ======================================================*/
 :root {
     /* Cores da Marca */
-    --blue: #21304D;          /* Azul Escuro (Principal) */
-    --light-blue: #3e5b9693;  /* Azul Claro (Fundo Main) */
-    --gold: #C89B3C;          /* Dourado (Destaques) */
+    --blue: #21304D;          /* Azul Escuro (Confiança/Engenharia) */
+    --light-blue: #3e5b9693;  /* Azul Claro Transparente */
+    --gold: #C89B3C;          /* Dourado (Premium/Detalhe) */
     
     /* Cores Neutras */
-    --dark: #1a1a1a;          /* Fundo Body */
-    --white: #ffffff;         /* Texto Claro */
-    --gray-light: #f4f4f4;    /* Fundo de Modais/Inputs */
-    --text-dark: #333333;     /* Texto Escuro (para fundos claros) */
+    --dark: #1a1a1a;          
+    --white: #ffffff;         
+    --gray-light: #f4f4f4;    
+    --text-dark: #333333;     
 }
 
 * {
-    box-sizing: border-box; /* Garante que padding não aumenta largura dos elementos */
+    box-sizing: border-box; /* Garante cálculo correto de larguras */
 }
 
 html, body {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; /* Fonte Segura e Uniforme */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
     background-color: var(--dark); 
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-size: 16px; /* Base para rem/em */
+    font-size: 16px; /* Base para rem */
     line-height: 1.6;
 }
 
-/* Garante que elementos de formulário herdam a fonte correta */
+/* Garante que inputs herdam a fonte */
 button, input, select, textarea {
     font-family: inherit;
 }
@@ -41,24 +41,31 @@ main {
 }
 
 /*======================================================
-  2. HEADER E NAVEGAÇÃO
+  2. HEADER E NAVEGAÇÃO (Layout Flexível)
 ======================================================*/
 header {
     background-color: var(--blue); 
     color: var(--white);
     padding: 1em 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    
+    /* --- REQUISITO: LAYOUT FLEXÍVEL --- */
+    /* Flexbox permite alinhar o Logo à esquerda e o Menu à direita automaticamente */
+    display: flex; 
+    align-items: center; /* Centra verticalmente os itens no cabeçalho */
+    justify-content: space-between; /* Cria o espaço vazio entre o logo e o menu */
+    
     border-bottom: 3px solid var(--gold); 
-    position: sticky; /* Mantém o menu no topo */
+    
+    /* --- MELHORIA DE UX (User Experience) --- */
+    /* Mantém o menu fixo no topo do ecrã mesmo quando o utilizador faz scroll */
+    position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Garante que o menu fica sempre por cima de outros elementos (como sliders) */
 }
 
 /* --- LOGOTIPO --- */
 #logo {
-    display: flex;
+    display: flex; /* Alinha a imagem e o texto do logo lado a lado */
     align-items: center;
     text-decoration: none;
     color: var(--white);
@@ -68,8 +75,8 @@ header {
     width: 5em;     
     height: 5em;
     margin-right: 0.8em;
-    border-radius: 50%;
-    border: 2px solid var(--gold); /* Toque extra de marca */
+    border-radius: 50%; /* Torna a imagem quadrada num círculo perfeito */
+    border: 2px solid var(--gold); /* Reforça a identidade visual da marca */
 }
 
 #logo h1 {
@@ -83,11 +90,13 @@ header {
 
 /* --- MENU --- */
 nav ul {
-    list-style: none;
+    list-style: none; /* Remove as "bolinhas" da lista não ordenada */
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 1.5em; /*Espaçamento entre botões*/
+    
+    /* Layout Horizontal do Menu */
+    display: flex; 
+    gap: 1.5em; /* Espaçamento moderno e flexível entre os links */
     align-items: center;
 }
 
@@ -97,37 +106,43 @@ nav ul li a {
     padding: 0.5em 1em;
     font-size: 1em;
     font-weight: 600; 
+    
+    /* --- REQUISITO: INTERATIVIDADE --- */
+    /* Suaviza a mudança de cor (0.3 segundos) para um efeito mais profissional */
     transition: all 0.3s ease; 
     border-radius: 4px;
 }
 
-nav ul li a:hover {
+/* Hover e Estado Ativo */
+/* Altera o fundo e a cor do texto ao passar o rato ou na página ativa */
+nav ul li a:hover,
+nav ul li a.active {
     background-color: var(--gold);
     color: var(--blue);
 }
 
-/* --- SUBMENU (DROPDOWN) --- */
+/* --- SUBMENU (DROPDOWN) - REQUISITO OBRIGATÓRIO --- */
 .dropdown {
-    position: relative; 
+    position: relative; /* Define o ponto de referência para o submenu absoluto */
     display: inline-block;
 }
 
 .dropdown_content {
-    display: none;
-    position: absolute; 
-    top: 100%; 
+    display: none; /* Esconde o submenu por defeito */
+    
+    position: absolute; /* Retira o elemento do fluxo normal */
+    top: 100%; /* Posiciona logo abaixo do item pai */
     left: 0; 
     background-color: var(--blue);
-    min-width: 14em;
-    box-shadow: 0px 8px 16px rgba(0,0,0, 0.3);
-    /*border-top: 3px solid var(--gold);*/
+    min-width: 14em; /* Largura mínima para o texto não quebrar */
+    box-shadow: 0px 8px 16px rgba(0,0,0, 0.3); /* Sombra para dar profundidade (efeito 3D) */
     border-radius: 0 0 5px 5px;
 }
 
 .dropdown_content a {
     padding: 0.8em 1em;
-    display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: block; /* Ocupa a largura total da caixa */
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* Separador subtil entre itens */
 }
 
 .dropdown_content a:hover {
@@ -135,28 +150,31 @@ nav ul li a:hover {
     color: var(--blue);
 }
 
+/* Lógica de Aparecimento: Quando se passa o rato no pai (.dropdown), mostra o filho (.dropdown_content) */
 .dropdown:hover .dropdown_content {
     display: block;
 }
-
 /*======================================================
   3. HOME (INTRODUÇÃO E SLIDER)
 ======================================================*/
 #slides-section {
     background-color: var(--blue);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
+    border-radius: 8px; /* Arredondamento CSS3 */
+    
+    /* --- REQUISITO: LAYOUT FLEXÍVEL --- */
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 3em;
+    max-width: 1200px; /* O contentor cresce até 1200px, mas encolhe em ecrãs menores */
+    margin: 0 auto 3em; /* Centrar o bloco horizontalmente */
+    
     padding: 3em 2em;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0, 0.2); /* Sombra para profundidade */
 }
 
 .introducao-homepage {
     font-size: 2em;
-    color: var(--gold);
+    color: var(--gold); /* Uso de variáveis para consistência */
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 2px;
@@ -166,20 +184,22 @@ nav ul li a:hover {
     display: inline-block;
 }
 
-/* Grelha de Introdução (Texto lado a lado) */
+/* Contentor de Texto (Grelha) */
 .introducao-homepage-cont {
+    /* --- REQUISITO: LAYOUT FLEXÍVEL (GRID) --- */
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    /* Define duas colunas de tamanho igual usando a unidade fracionária (fr) */
+    grid-template-columns: 1fr 1fr; 
     gap: 2em;
     margin-bottom: 3em;
     text-align: left;
 }
 
 .introducao-item {
-    background: rgba(255,255,255,0.05); /* Fundo subtil */
+    background: rgba(255,255,255,0.05); /* Fundo com transparência */
     padding: 1.5em;
     border-radius: 6px;
-    border-left: 4px solid var(--gold);
+    border-left: 4px solid var(--gold); /* Detalhe visual da marca */
 }
 
 .introducao-titulo {
@@ -193,94 +213,127 @@ nav ul li a:hover {
 .introducao-item p {
     color: #ccc;
     font-size: 0.95em;
-    line-height: 1.6;
     margin: 0;
 }
 
-/* Slider */
-.slideshow-container {
-    width: 100%;
-    max-width: 600px;
-    position: relative;
-    aspect-ratio: 16/9;
-    margin: 0 auto;
-    border-radius: 8px;
-    overflow: hidden;
-    /*border: 1px solid var(--gold);*/
-}
-
-.slides {
-    display: none;
-    width: 100%;
-    height: 100%;
-}
-
-/* Correção para garantir que a imagem ocupa o slider todo */
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Responsividade para Home */
+/* --- REQUISITO: RESPONSIVIDADE (MEDIA QUERY) --- */
+/* Ajusta o layout para tablets e telemóveis (ecrãs menores que 768px) */
 @media (max-width: 768px) {
     .introducao-homepage-cont {
-        grid-template-columns: 1fr; /* Colunas empilham em mobile */
+        /* Altera de 2 colunas para 1 única coluna empilhada */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
     
+    /* Ajusta as bordas para ficarem esteticamente corretas em modo vertical */
     .introducao-item {
         border-left: none;
         border-top: 4px solid var(--gold);
     }
 }
 
-/* --- BANNERS DAS ÁREAS (MECÂNICA E ESTÉTICA) --- */
-.hero-banner {
-    position: relative;
+/* --- SLIDER DE IMAGENS --- */
+.slideshow-container {
     width: 100%;
-    height: 350px;
-    display: flex;
-    align-items: center; /* Centra verticalmente */
-    justify-content: flex-end; /* CRUCIAL: Empurra o conteúdo para a DIREITA */
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 3em;
-    /* Ajuste para anular o padding do main */
+    max-width: 600px;
+    position: relative;
+    
+    /* Propriedade moderna para evitar 'layout shifts' (saltos na página) ao carregar imagens */
+    aspect-ratio: 16/9; 
+    
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que a imagem não sai dos limites arredondados */
+}
+
+.slides {
+    display: none; /* Oculto por defeito. O JavaScript altera para 'block' */
+    width: 100%;
+    height: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    /* Garante que a imagem preenche o slider sem distorcer/esticar (corta o excesso) */
+    object-fit: cover; 
+}
+
+/* --- ANIMAÇÃO (VALORIZAÇÃO GRÁFICA) --- */
+.fade {
+  animation-name: fade;
+  animation-duration: 2s; /* Duração da transição */
+}
+
+/* Define a transição de opacidade (de transparente para visível) */
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/*======================================================
+  4. BANNERS (Mecânica e Estética)
+  Gestão de imagens de destaque e secções de chamada para ação
+======================================================*/
+.hero-banner {
+    position: relative; /* Contexto para o overlay absoluto */
+    
+    /* --- TÉCNICA AVANÇADA DE LAYOUT --- */
+    /* Como o <main> tem padding, o banner ficaria "preso" dentro dele. 
+       Usamos calc() e margens negativas para forçar o banner a ocupar a largura total,
+       ignorando o padding do elemento pai. */
+    width: calc(100% + 2em); 
     margin-left: -1em;
     margin-right: -1em;
-    width: calc(100% + 2em);
     margin-top: -2em;
+    
+    height: 350px;
+    
+    /* --- REQUISITO: FLEXBOX --- */
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: flex-end; /* Empurra o conteúdo (texto) para a direita */
+    
+    background-size: cover; /* Garante que a imagem cobre a área sem distorcer */
+    background-position: center;
+    margin-bottom: 3em;
 }
 
 .hero-overlay {
-    position: absolute;
+    position: absolute; /* Cobre todo o banner */
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Gradiente invertido para escurecer mais o lado direito onde está o texto */
+    
+    /* --- REQUISITO: CSS3 (GRADIENTES) --- */
+    /* Gradiente semi-transparente que escurece a imagem apenas onde está o texto,
+       garantindo contraste e legibilidade. */
     background: linear-gradient(270deg, rgba(33, 48, 77, 0.95) 0%, rgba(33, 48, 77, 0.4) 100%);
+    
     z-index: 1;
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold); /* Identidade visual */
 }
 
 .hero-content {
     position: relative; 
-    z-index: 2; 
+    z-index: 2; /* Texto fica acima do overlay escuro */
     color: var(--white);
-    padding-right: 10%; /* Espaço da margem direita */
+    
+    /* Posicionamento responsivo do texto */
+    padding-right: 10%; 
     padding-left: 5%; 
     max-width: 800px;
-    text-align: right; /* Alinha o texto e o botão à direita */
+    text-align: right; 
+    
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Garante que elementos flexíveis fiquem à direita */
+    align-items: flex-end; /* Alinha os itens flexíveis à direita */
 }
 
+/* Elemento decorativo puramente CSS */
 .hero-accent-line {
     width: 80px; 
     height: 5px; 
     background-color: var(--gold); 
     margin-bottom: 20px;
-    /* Não precisa de margem auto se usarmos align-items: flex-end no pai */
 }
 
 .hero-content h1 { 
@@ -290,89 +343,77 @@ nav ul li a:hover {
     margin: 0 0 10px 0; 
 }
 
-.hero-content p { 
-    font-size: 1.3em; 
-    margin: 0; 
-    opacity: 0.9; 
-    margin-bottom: 25px; 
+.hero-content p {
+    font-size: 1.3em;
+    margin: 0;
+    opacity: 0.9;
+    margin-bottom: 25px;
 }
 
-/* Imagens de Fundo (Caminhos Corrigidos) */
-.banner-mecanica-img { 
-    background-image: url('../images/services/mecanica_banner.jpg'); 
-}
-.banner-estetica-img { 
-    background-image: url('../images/services/estetica_banner.jpg'); 
-}
-.banner-about-img { 
-    background-image: url('../images/garagem.jpeg'); 
-}
-.banner-services-img { 
-    background-image: url('../images/services/services.jpg');
-}
+/* --- SEPARAÇÃO DE CONTEÚDO E ESTILO --- */
+/* Classes específicas apenas para trocar a imagem de fundo */
+.banner-mecanica-img { background-image: url('../images/services/mecanica_banner.jpg'); }
+.banner-estetica-img { background-image: url('../images/services/estetica_banner.jpg'); }
+.banner-services-img { background-image: url('../images/services/services.jpg'); }
+.banner-about-img { background-image: url('../images/garagem.jpeg'); }
 
 /* Botão dos Banners */
 .btn-hero {
-    display: inline-block; 
+    display: inline-block;
     padding: 12px 30px;
-    background-color: var(--gold); 
-    color: var(--blue); 
+    background-color: var(--gold);
+    color: var(--blue);
     font-weight: 800;
-    text-transform: uppercase; 
-    text-decoration: none; 
+    text-transform: uppercase;
+    text-decoration: none;
     border-radius: 4px;
-    border: 2px solid var(--gold); 
-    transition: all 0.3s ease;
+    border: 2px solid var(--gold);
+    transition: all 0.3s ease; /* Transição suave */
 }
 
-.btn-hero:hover { 
-    background-color: transparent; 
-    color: var(--gold); 
+.btn-hero:hover {
+    background-color: transparent; /* Efeito "outline" no hover */
+    color: var(--gold);
 }
 
+/* --- SECÇÃO CALL-TO-ACTION (Link para Formulário) --- */
 #formulario-section {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 400px; /* Altura fixa para impacto visual */
+    height: 400px;
     margin: 0 auto 3em;
     border-radius: 8px;
-    overflow: hidden;
+    
+    /* Garante que a imagem de fundo não saia das bordas arredondadas */
+    overflow: hidden; 
+    
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centra o conteúdo no meio da imagem */
     border: 1px solid var(--gold);
 }
 
-/* Imagem de Fundo */
 .img-form {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
     z-index: 1;
 }
 
-/* Filtro Escuro para o texto ser legível */
+/* Filtro de cor sólida com transparência para uniformizar o fundo */
 .filtro-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(33, 48, 77, 0.85); /* Azul da marca com transparência */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(33, 48, 77, 0.85);
     z-index: 2;
 }
 
-/* Conteúdo (Texto e Botão) */
 .content-forms {
     position: relative;
-    z-index: 3;
+    z-index: 3; /* Texto no topo da pilha */
     text-align: center;
     padding: 2em;
-    max-width: 800px;
 }
 
 .introducao-form {
@@ -381,11 +422,8 @@ nav ul li a:hover {
     text-transform: uppercase;
     font-weight: 800;
     margin-bottom: 1.5em;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    line-height: 1.2;
 }
 
-/* Botão Grande */
 .btn-home-to-form {
     background-color: var(--gold);
     color: var(--blue);
@@ -397,280 +435,188 @@ nav ul li a:hover {
     border-radius: 5px;
     transition: transform 0.3s, background-color 0.3s;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
+/* Micro-interação: O botão cresce ligeiramente (zoom) ao passar o rato */
 .btn-home-to-form:hover {
     background-color: var(--white);
-    color: var(--blue);
     transform: scale(1.05);
 }
 
-.team-member img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%; /* Foto redonda */
-    object-fit: cover;
-    border: 4px solid var(--gold); /* Borda Dourada */
-    margin-bottom: 15px;
-    transition: 0.3s;
-}
-
-.team-member:hover img {
-    transform: scale(1.1);
-    border-color: var(--blue);
-}
-
-.team-member h4 {
-    color: var(--blue);
-    font-size: 1.3em;
-    margin-bottom: 5px;
-}
-
-.team-member .role {
-    color: #777;
-    font-style: italic;
-    font-size: 0.9em;
-}
-
 /*======================================================
-  4. Sobre
+  5. SOBRE (Página About)
+  Layout estrutural para secções de texto, estatísticas e equipa
 ======================================================*/
-
 .titulo-subtitulo {
-    /* Layout e Fundo */
     height: 350px;
+    
+    /* --- REQUISITO: FLEXBOX PARA ALINHAMENTO --- */
     display: flex;
-    flex-direction: column; /* Empilha o H1 e H2 */
+    flex-direction: column; /* Empilha o Título (H1) e o Subtítulo (H2) verticalmente */
     justify-content: center; /* Centra verticalmente */
     align-items: center; /* Centra horizontalmente */
+    
     text-align: center;
-    
-    /* Fundo*/
     background-color: var(--blue); 
-    background-size: cover;
-    background-position: center;
-    
     color: var(--white);
     border-bottom: 4px solid var(--gold); 
 }
 
-/* Título Principal*/
 .titulo-subtitulo h1 {
-    font-family: 'Montserrat', 'Segoe UI', sans-serif;
     font-size: 3em;       
-    font-weight: 800;     /* Extra Bold */
+    font-weight: 800;     
     text-transform: uppercase;
-    color: var(--white);  /* Contraste */
-    margin-bottom: 10px;  /* Espaço para o subtítulo */
-    
-    /* Sombra do fundo */
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    letter-spacing: 1px;
+    margin-bottom: 10px;
 }
-
-/* O Subtítulo */
 .titulo-subtitulo h2 {
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 1.5em;     /* Metade do tamanho do H1 */
-    font-weight: 400;    
-    color: var(--gold);   /* Destacar "Engenharia" */
-    
-    letter-spacing: 3px;  /* Espaçamento largo*/
+    font-size: 1.5em;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 3px;
     text-transform: uppercase;
-    
-    /* Linha*/
     display: inline-block;
     border-top: 1px solid var(--gold);
     border-bottom: 1px solid var(--gold);
     padding: 10px 20px;
 }
 
-/*Corpo (imagem com as mesmas configurações da imagem da Página de início)*/
-.historia{
-    position: relative;
-    
-    /* Layout do Texto no Centro */
+.historia {
     display: flex;
     justify-content: center; 
     align-items: center;     
     text-align: center;     
-
-    padding: 20px 20px;     /* Espaço em cima e em baixo*/
-    color: var(--white);     /* Cor do texto*/
+    padding: 2em 1em;     
+    color: var(--white);     
 }
 
-/* Contentor do Texto*/
 .historia-texto {
-    max-width: 800px;        /* Limita a largura*/
+    max-width: 800px; /* Limita a largura para leitura confortável */
     margin: 0 auto;
-    z-index: 3;
 }
 
-/* Título - Corpo*/
 .texto-titulo {
     color: var(--gold);      
     font-size: 2.5em;       
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 30px;
-    position: relative;
-    z-index: 3;
 }
 
-/* Linha decorativa*/
+/* Elemento decorativo (linha) criado via CSS */
 .texto-titulo::after {
     content: '';
     display: block;
-    width: 550px;
+    width: 200px;
     height: 4px;
     background-color: var(--gold);
-    margin: 15px auto;       /* Centrar o bloco automaticamente */
-    border-radius: 2px;
+    margin: 15px auto;
 }
-
-/* Parágrafos */
 .historia-texto p {
     font-size: 1.2em;
     line-height: 1.8;
-    /* Transparência mínima - suavizar */
-    color: rgba(255, 255, 255, 0.95); 
+    color: rgba(255, 255, 255, 0.95);
     margin-bottom: 25px;
 }
-
-/* Destaque Dourado */
 .historia-texto strong {
     color: var(--gold);
     font-weight: bold;
     letter-spacing: 1px;
 }
 
-/*BARRA DE ESTATÍSTICAS*/
+/* --- ESTATÍSTICAS --- */
 .estatisticas {
-    /* Fundo e Layout */
-   padding: 60px 20px;            /* Espaçamento vertical generoso */
+    /* --- MELHORIA: UNIDADES RELATIVAS (REM) --- */
+    /* Substituição de pixéis fixos por rem para melhor acessibilidade e flexibilidade */
+    padding: 4rem 1.5rem;            
     
-    /* Alinhar os itens */
     display: flex;
-    justify-content: center;       /* Centra o grupo na página */
-    gap: 80px;                     /* Espaço grande entre cada estatística */
-    flex-wrap: wrap;               /* Responsividade - "cair" para baixo */
-
+    justify-content: center;       
+    gap: 80px;                     
+    flex-wrap: wrap; /* Permite que os itens caiam para a linha seguinte em ecrãs pequenos */
+              
     max-width: 1200px;
-    margin: 40px auto;              /* Centra o bloco*/ 
-
-    /*Bordas*/
+    margin: 40px auto;              
     border: 3px solid var(--gold);
     border-radius: 15px;
-
-    /*Saliência*/
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* O Contentor de cada item individual */
 .estatisticas-item {
     display: flex;
-    flex-direction: column;        /* Número em cima, texto em baixo */
+    flex-direction: column;        
     align-items: center;           
-    text-align: center;
-    min-width: 200px;              /* Garante que não ficam esmagados */
+    min-width: 200px;              
 }
 
-/* O Número (+10, +5000) */
 .estatisticas-numero {
     font-size: 3.5em;              
     font-weight: 800;             
     color: var(--gold);            
-    line-height: 1;                /* Remove espaço extra acima/abaixo */
-    margin-bottom: 10px;           /* Afasta da descrição */
-    
-    /*"Levantar" o número do fundo */
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    line-height: 1;                
+    margin-bottom: 10px;           
 }
 
-/* A Descrição (Anos de Experiência, etc.) */
 .estatisticas-descricao {
-    color: var(--white);
     font-size: 1.1em;
-    font-weight: 300;              
     text-transform: uppercase;     
     letter-spacing: 2px;           
-    opacity: 0.9;
 }
 
-/* Valores ()Missã, visã, Valores*/
+/* --- VALORES (GRID RESPONSIVO) --- */
 .valores {
-    /* Layout em Grelha */
     display: grid;
-    /*Cria colunas automáticas - nunca menores que 300px */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 30px;               /* Espaço entre os cartões */
     
-    padding: 80px 20px;      /* Margens internas */
+    /* --- REQUISITO: LAYOUT FLEXÍVEL --- */
+    /* Cria colunas automáticas. 'minmax(300px, 1fr)' garante que cada cartão tem
+       pelo menos 300px de largura, mas estica (1fr) se houver espaço. 
+       Elimina a necessidade de media queries complexos. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    
+    gap: 30px;               
+    padding: 5rem 1.5rem;      
     max-width: 1200px;       
     margin: 0 auto;      
 }
 
-/* Estilo de cada Cartão */
 .valores-cartao {
     background-color: #fff;  
-    padding: 40px;           /* Espaço interno */
-    
-    /*Borda lateral*/
+    padding: 40px;           
     border-left: 5px solid var(--gold); 
-    
-    /* Sombra para destacar do fundo branco*/
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    
-    /* Animação ao passar o rato */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
+    transition: transform 0.3s ease;
     border-radius: 4px;    
 }
 
-/* Efeito Hover*/
+/* Micro-interação: Efeito de levitação */
 .valores-cartao:hover {
-    transform: translateY(-10px); /* O cartão "flutua"*/
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra aumenta */
+    transform: translateY(-10px); 
 }
 
-/* Títulos*/
 .valores-cartao h3 {
     color: var(--blue);
     font-size: 1.5em;
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 20px;
-    letter-spacing: 1px;
-    
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
-/* Parágrafos */
 .valores-cartao p {
     color: #555;            
-    line-height: 1.6;      
-    font-size: 1.1em;
 }
 
-/* EQUIPA */
+/* --- EQUIPA --- */
 .equipa {
-    padding: 80px 20px;
+    padding: 5rem 1.5rem;
     text-align: center;      
     background-color: #f9f9f9; 
 }
 
-/* Título da Equipa */
 .titulo-equipa {
     color: var(--blue);
     font-size: 2em;
     font-weight: 800;
     text-transform: uppercase;
-    margin-bottom: 10px;     /* Espaço antes do subtitulo */
-    position: relative;
-    display: block;
+    margin-bottom: 50px;
 }
 
 /*Subtítulo da Euipa*/
@@ -684,51 +630,42 @@ nav ul li a:hover {
     display: block;
 }
 
-/* O "Grid" Membros */
 .equipa-grid {
-    display: flex;           /* Alinhar itens lado a lado */
-    justify-content: center; /* Centra os membros na página */
-    gap: 50px;               /* Espaço entre cada pessoa */
-    flex-wrap: wrap;         /* "Cair"" para baixo */
+    display: flex;           
+    justify-content: center; 
+    gap: 50px;               
+    flex-wrap: wrap; /* Garante responsividade em mobile */
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Cartão Individual*/
 .equipa-membro {
-    width: 280px;            /* Largura fixa para o cartão */
+    width: 280px;            
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    /* Pequena animação ao passar o rato no cartão inteiro */
     transition: transform 0.3s ease;
 }
 
 .equipa-membro:hover {
-    transform: translateY(-5px); /* Sobe ligeiramente */
+    transform: translateY(-5px); 
 }
 
-/* IMAGENS dos LIDERES*/
 .equipa-membro img {
-    /* Tamanho Fixo (igual para todos) */
     width: 220px;
     height: 220px;
     
-    /* Faz com que a imagem preencha o quadrado de 220x220 
-       cortando o excesso nas bordas, sem distorcer a cara da pessoa */
+    /* --- TRATAMENTO DE IMAGEM --- */
+    /* 'cover' garante que a foto preenche o círculo sem distorcer a cara da pessoa,
+       mesmo que a imagem original seja retangular. */
     object-fit: cover; 
+    object-position: top center; /* Foca no topo (rosto) */
     
-    /* Alinhar pelo topo, para "focar" na cara*/
-    object-position: top center;
-    
-    border-radius: 50%;      /* Faz a imagem redonda*/
-    border: 4px solid var(--gold); /* Borda da marca */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Sombra para dar destaque */
-    margin-bottom: 20px;     /* Espaço entre foto e nome */
+    border-radius: 50%;      
+    border: 4px solid var(--gold); 
+    margin-bottom: 20px;     
 }
 
-/* Nome do Membro */
 .equipa-membro h4 {
     color: var(--blue);
     font-size: 1.4em;
@@ -736,22 +673,27 @@ nav ul li a:hover {
     margin-bottom: 5px;
 }
 
-/* Cargo / Função */
 .equipa-membro .role {
-    color: #666;             /* Cinza para hierarquia visual menor */
-    font-size: 1em;
-    font-style: italic;      /* Itálico para dar estilo */
-    font-weight: 500;
+    color: #666;             
+    font-style: italic;      
 }
 
 /*======================================================
-  5. CARTÕES DE SERVIÇOS (Layout Vertical)
+  6. SERVIÇOS (Grid Layout)
+  Implementação de uma grelha inteligente que se adapta ao ecrã
 ======================================================*/
 .services_grid {
     display: grid;
-    /* Grelha responsiva: colunas de min 280px */
+    
+    /* --- REQUISITO: LAYOUT FLEXÍVEL E RESPONSIVO --- */
+    /* Esta é a "fórmula mágica" do CSS Grid Responsivo:
+       1. 'repeat(auto-fit, ...)': Cria tantas colunas quantas couberem no ecrã.
+       2. 'minmax(280px, 1fr)': Cada coluna tem no mínimo 280px. Se houver espaço extra,
+          ela estica (1fr) para ocupar a largura total. 
+       Isto elimina a necessidade de media queries para telemóvel/tablet. */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2em; 
+    
+    gap: 2em; /* Espaçamento entre cartões */
     margin-top: 2em;
     max-width: 1200px;
     margin-left: auto;
@@ -762,15 +704,23 @@ nav ul li a:hover {
     background-color: var(--blue);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    
+    /* Flexbox vertical para garantir que o rodapé do cartão fica sempre em baixo */
     display: flex;
     flex-direction: column; 
-    position: relative;
-    cursor: pointer;
+    
+    position: relative; /* Referência para a seta absoluta (::after) */
+    cursor: pointer; /* Indica que o cartão é clicável (abre Modal) */
+    
+    /* --- REQUISITO: INTERATIVIDADE (USER FRIENDLY) --- */
+    /* Transição suave para o efeito hover e sombra */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
     overflow: hidden;
-    height: 100%;
+    height: 100%; /* Garante que todos os cartões na mesma linha têm a mesma altura */
 }
 
+/* Efeito de "Levitação" ao passar o rato */
 .card_service:hover {
     transform: translateY(-5px);
     border-color: var(--gold);
@@ -780,15 +730,20 @@ nav ul li a:hover {
 .card_img {
     width: 100%;
     height: 180px;
-    object-fit: cover;
+    
+    /* Garante que a imagem preenche o topo do cartão sem distorcer */
+    object-fit: cover; 
     border-bottom: 3px solid var(--gold);
 }
 
 .card_text {
     padding: 1.5em;
+    
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    
+    /* O texto expande-se para ocupar o espaço vazio, empurrando a seta para o fundo */
+    flex-grow: 1; 
 }
 
 .card_text h3 {
@@ -806,7 +761,8 @@ nav ul li a:hover {
     text-align: left;     
 }
 
-/* Seta Indicativa */
+/* --- PSEUDO-ELEMENTO (SETA) --- */
+/* Criação de um elemento visual (seta) apenas com CSS, sem sujar o HTML */
 .card_service::after {
     content: "→";
     position: absolute;
@@ -815,47 +771,62 @@ nav ul li a:hover {
     font-size: 1.5em;
     color: var(--gold);
     transition: transform 0.3s ease;
-    line-height: 1;
 }
 
+/* Animação da seta ao passar o rato no cartão */
 .card_service:hover::after {
-    transform: translateX(5px);
+    transform: translateX(5px); /* Move a seta ligeiramente para a direita */
     color: var(--white);
 }
 
 /*======================================================
-  6. MODAL / POP-UP (Estilo Bosch com Cores da Marca)
+  7. MODAL (Popup)
+  Janela de sobreposição para exibir detalhes sem sair da página
 ======================================================*/
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 2000;
+    display: none; /* Oculto por defeito. O JavaScript altera para 'flex' ao clicar */
+    position: fixed; /* Fixa em relação à janela do browser (viewport) */
+    z-index: 2000; /* Garante que fica acima de tudo (incluindo o header sticky) */
+    
     left: 0;
     top: 0;
     width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.8); /* Fundo escuro */
+    height: 100%; /* Cobre o ecrã inteiro */
+    
+    overflow: auto; /* Permite scroll se o conteúdo for maior que o ecrã */
+    background-color: rgba(0,0,0,0.8); /* Fundo escuro semi-transparente */
+    
+    /* --- EFEITO MODERNO (VALORIZAÇÃO) --- */
+    /* Aplica um desfoque ao conteúdo que está por trás do modal */
     backdrop-filter: blur(5px);
+    
+    /* Centralização do conteúdo do modal usando Flexbox */
     align-items: center;
     justify-content: center;
 }
 
 .modal-content {
     background-color: var(--gray-light);
-    color: var(--text-dark);             /* Texto ESCURO */
-    margin: auto;
+    color: var(--text-dark);             
+    margin: auto; /* Centralização automática em displays block (fallback) */
     padding: 40px;
-    border-top: 6px solid var(--gold);   /* Linha Dourada no topo */
+    
+    border-top: 6px solid var(--gold); /* Detalhe visual da marca no topo */
     border-radius: 4px;
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    
+    /* Largura responsiva */
+    width: 90%; /* Em telemóveis ocupa quase tudo */
+    max-width: 600px; /* Em PC não passa dos 600px */
+    
+    position: relative; /* Referência para o botão de fechar absoluto */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* Sombra profunda para destaque */
     text-align: left;
+    
+    /* --- ANIMAÇÃO DE ENTRADA --- */
     animation: modalOpen 0.4s ease-out;
 }
 
+/* Definição da animação: desliza de baixo para cima enquanto aparece */
 @keyframes modalOpen {
     from {opacity: 0; transform: translateY(30px);}
     to {opacity: 1; transform: translateY(0);}
@@ -863,64 +834,54 @@ nav ul li a:hover {
 
 .close-btn {
     color: var(--blue);
-    position: absolute;
+    position: absolute; /* Posicionado no canto superior direito do .modal-content */
     top: 15px;
     right: 20px;
     font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
     line-height: 1;
-    transition: color 0.3s;
 }
 
-.close-btn:hover {
-    color: var(--gold);
-}
+.close-btn:hover { color: var(--gold); }
 
-/* Tipografia do Modal */
+/* Estilo do Título (que é injetado dinamicamente pelo JS) */
 #modalTitle {
-    color: var(--blue); /* Título na cor da marca */
+    color: var(--blue); 
     font-size: 1.8em;
     font-weight: 800;
     margin-top: 0;
     margin-bottom: 20px;
-    border-left: 5px solid var(--blue);
+    border-left: 5px solid var(--blue); /* Linha vertical decorativa */
     padding-left: 15px;
     text-transform: uppercase;
 }
 
-#modalDesc {
-    margin-bottom: 20px;
-    font-size: 1em;
-    color: #444;
-}
-
-/* Lista de Pontos (Bullets) */
 .modal-list {
-    list-style: none;
+    list-style: none; /* Remove os bullets padrão do browser */
     padding: 0;
     margin-bottom: 30px;
 }
 
 .modal-list li {
     position: relative;
-    padding-left: 20px;
+    padding-left: 20px; /* Espaço para o bullet personalizado */
     margin-bottom: 10px;
     font-weight: 600;
     color: var(--text-dark);
 }
 
-/* Quadrado (Bullet) personalizado */
+/* --- BULLETS PERSONALIZADOS --- */
+/* Cria um quadrado dourado antes de cada item da lista */
 .modal-list li::before {
     content: "■";
-    color: var(--gold); /* Bullet dourado */
+    color: var(--gold);
     font-size: 0.8em;
     position: absolute;
     left: 0;
     top: 4px;
 }
 
-/* Botões do Modal */
 .modal-actions {
     display: flex;
     flex-direction: column;
@@ -929,32 +890,27 @@ nav ul li a:hover {
 }
 
 .btn-modal-primary {
-    background-color: var(--blue); /* Botão Azul da Marca */
+    background-color: var(--blue); 
     color: var(--white);
     padding: 15px 30px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1em;
-    border: none;
     border-radius: 4px;
     transition: background 0.3s;
     display: inline-block;
-    cursor: pointer;
 }
 
 .btn-modal-primary:hover {
-    background-color: var(--gold); /* Hover Dourado */
+    background-color: var(--gold); 
     color: var(--blue);
 }
 
 .btn-modal-secondary {
     color: var(--blue);
     text-decoration: none;
-    font-size: 0.95em;
     font-weight: bold;
-    transition: color 0.3s;
-    background: none;
     border: none;
+    background: none;
     padding: 0;
     cursor: pointer;
 }
@@ -964,12 +920,12 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* =========================================
-   7. CONTACTOS E FORMULÁRIO (Uniformizado)
-   ========================================= */
-
-/* Header da Página de Contactos */
+/*======================================================
+  8. CONTACTOS E FORMULÁRIO
+  Estilização da página de contactos e do componente React
+======================================================*/
 .contactos-conteudo {
+    /* Layout vertical flexível */
     display: flex;
     flex-direction: column;
     align-items: center;     
@@ -978,74 +934,49 @@ nav ul li a:hover {
     width: 100%;
 }
 
-/* Regra para garantir que ambos os cartões têm tamanhos equilibrados */
-.contactos-introducao{
-    min-width: 300px;        /* Não ficam menores que isto */
-    width: 100%;             /* Em mobile ocupam tudo */
+/* Cartão de Introdução (acima do formulário) */
+.contactos-introducao {
+    /* Gradiente moderno utilizando as cores da marca */
+    background: linear-gradient(135deg, var(--blue) 0%, #1a253a 100%);
+    
+    padding: 50px 40px;      
+    border-radius: 8px;      
+    border-bottom: 5px solid var(--gold); /* Linha de destaque */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    text-align: center;      
+    width: 100%;
 }
 
-#react-contacto-form{
+.contactos-introducao h1 {
+    color: var(--gold);
+    font-size: 2.5em; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+}
+
+/* --- CONTENTOR REACT --- */
+/* Este ID é o alvo onde o React injeta o componente (ReactDOM.createRoot) */
+#react-contacto-form {
     max-width: 1200px;
     width: 100%; 
 }
 
-.contactos-introducao {
-    /* Visual de Cartão "Premium" */
-    background: linear-gradient(135deg, var(--blue) 0%, #1a253a 100%);
-    padding: 50px 40px;      /* Espaçamento interno generoso */
-    border-radius: 8px;      /* Cantos arredondados iguais ao form */
-    border-bottom: 5px solid var(--gold); /* Identidade visual na base */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra para dar profundidade */
-    
-    text-align: center;      /* Texto centrado */
-    height: fit-content;     /* O cartão ajusta-se ao tamanho do texto */
-}
-
-/* Título dentro do Cartão */
-.contactos-introducao h1 {
-    color: var(--gold);
-    font-family: 'Segoe UI', sans-serif; /* Simplifiquei a lista de fontes */
-    font-size: 2.5em; 
-    font-weight: 800; 
-    letter-spacing: 1px;
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    text-transform: uppercase;
-    line-height: 1.2;
-}
-
-/* Parágrafo dentro do Cartão */
-.contactos-introducao p {
-    color: var(--white);
-    font-size: 1.2em;
-    font-weight: 300; 
-    opacity: 0.9;
-    line-height: 1.6;
-}
-
-/* Formulário React */
+/* O "Corpo" do Formulário React */
 .contactos-form-container {
     width: 100%;
-    max-width: 100%;
     padding: 30px;
     border-radius: 8px;
-    background-color: var(--gray-light); /* Fundo claro para contraste */
+    background-color: var(--gray-light); /* Fundo claro para contraste com o texto */
     border-top: 5px solid var(--gold);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     color: var(--text-dark);
 }
 
-.contactos-form-container h3 {
-    color: var(--blue);
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
 .form-group {
     margin-bottom: 20px;
+    
+    /* Organiza Label e Input verticalmente */
     display: flex;
     flex-direction: column;
 }
@@ -1054,26 +985,21 @@ nav ul li a:hover {
     font-weight: bold;
     margin-bottom: 5px;
     color: var(--blue);
-    font-size: 0.9em;
 }
 
+/* Estilização Geral de Inputs */
 .form-group input, 
 .form-group select, 
 .form-group textarea {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-family: inherit;
     font-size: 1em;
-    background-color: #fff;
-    transition: border-color 0.3s;
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
+/* --- REQUISITO: USABILIDADE (UX) --- */
+/* O estado :focus dá feedback visual ao utilizador sobre qual campo está ativo.
+   Substitui o "outline" padrão do browser por um brilho dourado da marca. */
 .form-group input:focus, 
 .form-group select:focus, 
 .form-group textarea:focus {
@@ -1082,7 +1008,6 @@ nav ul li a:hover {
     box-shadow: 0 0 5px rgba(200, 155, 60, 0.3);
 }
 
-/* Botão Enviar */
 .btn-submit {
     width: 100%;
     padding: 15px;
@@ -1103,7 +1028,11 @@ nav ul li a:hover {
     color: var(--blue);
 }
 
-/* Mensagens de Sucesso/Erro */
+/* --- MENSAGENS DE FEEDBACK DO REACT --- */
+/* Estas classes são aplicadas condicionalmente pelo JavaScript (useState)
+   dependendo se o envio foi bem sucedido ou se houve erro de validação. */
+
+/* Sucesso (Verde) */
 .msg-success {
     margin-top: 20px;
     padding: 15px;
@@ -1115,6 +1044,7 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
+/* Erro (Vermelho) */
 .msg-error {
     margin-top: 20px;
     padding: 15px;
@@ -1127,24 +1057,34 @@ nav ul li a:hover {
 }
 
 /*======================================================
-  8. FOOTER
+  9. FOOTER (Rodapé)
+  Secção final com links úteis, redes sociais e data/hora
 ======================================================*/
 footer {
     background-color: var(--blue);
     color: var(--white);
     padding: 3em 1em 1em;
     width: 100%;
-    border-top: 4px solid var(--gold);
-    margin-top: auto; /* Empurra o footer para o fundo se houver pouco conteúdo */
+    border-top: 4px solid var(--gold); /* Linha de separação visual */
+    
+    /* "Sticky Footer" (Técnica): Se o conteúdo da página for curto,
+       isto ajuda a empurrar o footer para o fundo (junto com o min-height do main) */
+    margin-top: auto; 
 }
 
+/* --- GRELHA RESPONSIVA DE COLUNAS --- */
 .footer_wrapper {
     display: grid;
+    
+    /* --- REQUISITO: LAYOUT FLEXÍVEL --- */
+    /* Cria colunas automáticas. Em PC mostra 3 colunas, em telemóvel empilha tudo.
+       'minmax(200px, 1fr)' garante que cada coluna tem largura digna. */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    
     gap: 2em;
     margin-bottom: 2em;
     max-width: 1200px; 
-    margin: 0 auto 2em auto;
+    margin: 0 auto 2em auto; /* Centrar o wrapper */
 }
 
 .footer_column h3 {
@@ -1163,21 +1103,21 @@ footer {
 
 .footer_column ul li {
     margin-bottom: 0.8em;
-    font-size: 0.95em;
 }
 
 .footer_column ul li a {
     color: #e0e0e0;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s; /* Suaviza o hover */
 }
 
 .footer_column ul li a:hover {
     color: var(--gold); 
 }
 
+/* --- REDES SOCIAIS --- */
 .social_links {
-    display: flex;
+    display: flex; /* Alinha os ícones lado a lado */
     gap: 10px;
 }
 
@@ -1185,22 +1125,30 @@ footer {
     width: 2.5em;
     height: 2.5em; 
     border-radius: 8px;
-    transition: transform 0.3s, opacity 0.3s;
+    
+    /* Animação de transformação ao passar o rato */
+    transition: transform 0.3s;
 }
 
+/* Micro-interação: Zoom no ícone */
 .social_links img:hover {
-    opacity: 0.8;
     transform: scale(1.1);
 }
 
+/* --- BARRA INFERIOR (Data e Copyright) --- */
 .footer_bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha subtil */
     padding-top: 1em;
+    
+    /* --- REQUISITO: FLEXBOX DE ALINHAMENTO --- */
     display: flex;
-    justify-content: space-between;
+    /* 'space-between' cola a Data à esquerda e o Copyright à direita */
+    justify-content: space-between; 
     align-items: center;
+    
     font-size: 0.85em;
     color: #aaa;
     max-width: 1200px;
     margin: 0 auto;
+
 }
